@@ -37,7 +37,7 @@ include("conexionsql.php");
                 <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Actores
+                                PROGRAMACIÓN
                             </div>
                 <div class="card-body">
                                 <table id="datatablesSimple">
@@ -51,7 +51,8 @@ include("conexionsql.php");
                                             <th>Grupo</th>
                                             <th>Correo de Padre</th>
                                             <th>Correo de Madre</th>
-                                
+                                            <th>Reporte</th>
+                                            <th>Citatorio</th>
                                         </tr>
                                     </thead>
                                     
@@ -74,7 +75,8 @@ include("conexionsql.php");
                         <td class="celdas_tablas"><?php echo $mostrar['genero'] ?></td>
 						<td class="celdas_tablas"><?php echo $mostrar['correo_p']?></td>
                         <td class="celdas_tablas"><?php echo $mostrar['correo_m'] ?></td>
-
+                        <td class="celdas_tablas"><a href="../php/Reporte.php?matricula=<?php echo $mostrar['matricula'] ?>">Reporte</a></td>
+                        <td class="celdas_tablas"><a href="../php/Citatorio.php?matricula=<?php echo $mostrar['matricula'] ?>">Citatorio</a></td>
                     </tr>
       
 <?php
