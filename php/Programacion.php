@@ -48,6 +48,7 @@ include("conexionsql.php");
                                             <th>Nombre Completo</th>
                                             <th>Especialidad</th>
                                             <th>Genero</th>
+                                            <th>Grupo</th>
                                             <th>Correo de Padre</th>
                                             <th>Correo de Madre</th>
                                 
@@ -69,6 +70,7 @@ include("conexionsql.php");
 						<td class="celdas_tablas"><?php echo $mostrar['matricula'] ?></td>
 						<td class="celdas_tablas"><?php echo $mostrar['nombre'] ?></td>
 						<td class="celdas_tablas"><?php echo $mostrar['especialidad'] ?></td>
+                        <td class="celdas_tablas"><?php echo $mostrar['grupo'] ?></td>
                         <td class="celdas_tablas"><?php echo $mostrar['genero'] ?></td>
 						<td class="celdas_tablas"><?php echo $mostrar['correo_p']?></td>
                         <td class="celdas_tablas"><?php echo $mostrar['correo_m'] ?></td>
