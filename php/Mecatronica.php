@@ -27,11 +27,11 @@
             <p><a href="propedeutico.php">Curso propedeutico</a></p>
             <p><a href="Ayuda.php">Ayuda</a></p>
         </div>
-
-        </div>
         <main>
             
-        </main>
+            </main>
+        </div>
+        
 
 
     <!-- jQuery  -->
