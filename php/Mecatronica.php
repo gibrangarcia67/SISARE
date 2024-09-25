@@ -47,8 +47,8 @@ include("conexionsql.php");
                                             <th>Matricula</th>
                                             <th>Nombre Completo</th>
                                             <th>Especialidad</th>
-                                            <th>Genero</th>
                                             <th>Grupo</th>
+                                            <th>Genero</th>
                                             <th>Correo de Padre</th>
                                             <th>Correo de Madre</th>
                                 
