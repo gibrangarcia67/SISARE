@@ -21,11 +21,10 @@
     </div>
     <div class="content">
         <div class="menu">
-            <p><a href="../php/programacion.php">Programación</a></p>
-            <p><a href="../php/mecatronica.php">Mecatronica</a></p>
-            <p><a href="../php/Plasticos.php">Transformación de Plásticos</a></p>
-            <p><a href="../php/Propedeutico.php">Curso propedeutico</a></p>
-            <p><a href="../html/Ayuda.html">Ayuda</a></p>
+            <p><a href="../php/mostrarAlumnos.php?e=PROGRAMACIÓN">Programación</a></p>
+            <p><a href="../php/mostrarAlumnos.php?e=MECATRÓNICA">Mecatronica</a></p>
+            <p><a href="../php/mostrarAlumnos.php?e=TRANSFORMACIÓN DE PLÁSTICOS">Transformación de Plásticos</a></p>
+            <p><a href="../php/mostrarAlumnos.php?e=COMPONENTE BASICO Y PROPEDEUTICO">Curso propedeutico</a></p>
         </div>
 
         <div class="section">
