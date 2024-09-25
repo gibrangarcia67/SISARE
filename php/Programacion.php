@@ -37,7 +37,7 @@ include("conexionsql.php");
                 <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                Actores
+                                Programación
                             </div>
                 <div class="card-body">
                                 <table id="datatablesSimple">
@@ -58,7 +58,7 @@ include("conexionsql.php");
                                     <tbody>                       
 				<?php
                 
-					$sql="SELECT * FROM alumnos where especialidad='PROGRAMACIÓN' ";
+					$sql="SELECT * FROM alumnos where especialidad='PROGRAMACIÓN' ";  
                     $result=mysqli_query($conexion,$sql);
                     while($mostrar=mysqli_fetch_array($result)){
                                                                   
@@ -95,7 +95,7 @@ include("conexionsql.php");
     <script src="../layouts/assets/js/jquery.min.js"></script>
     <script src="../layouts/assets/js/bootstrap.bundle.min.js"></script>
     <script src="../layouts/assets/js/theme.js"></script>
-    <script src="../js/tables.js" crossorigin="anonymous"></script>
-    <script src="../js/datatables-simple-demo.js"></script>
+    <script src="../js/tables.js" crossorigin="anonymous"></script>?>
+    <script src="../js/datatables-simple-demo.js"></script>?>
 </body>
 </html>
