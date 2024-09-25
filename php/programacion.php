@@ -51,8 +51,6 @@ include("conexionsql.php");
                                             <th>Genero </th>
                                             <th>Correo de Padre</th>
                                             <th>Correo de Madre</th>
-                                            <th>Reporte</th>
-                                            <th>Citatorio</th>
                                         </tr>
                                     </thead>
                                     

@@ -34,7 +34,7 @@ $result=mysqli_query($conexion,$sql);
             
             <p class="bold-2 space">P R E S E N T E</p>
             
-            <div>Por este medio se le informa que su hija (o)    <input type="text" class="textin" style="width: 25em;" value="<?php echo $mostrar['nombre'] ?>">     del grupo     <input type="text" class="textin" style="width: 2em;" value="<?php echo $mostrar['grupo'] ?>">    <input type="text" class="textin" style="width: 2em;"> ha</div>
+            <div>Por este medio se le informa que su hija (o)    <input type="text" class="textin" style="width: 25em;" value="<?php echo $mostrar['nombre'] ?>">     del grupo     <input type="text" class="textin" style="width: 2em;" value="<?php echo $mostrar['grupo'] ?>">  ha</div>
             <div>sido reportada (o) por presentar la o las situaciones señaladas:</div>
             
             <div class="sit">
