@@ -75,7 +75,8 @@ include("conexionsql.php");
                         <td class="celdas_tablas"><?php echo $mostrar['genero'] ?></td>
 						<td class="celdas_tablas"><?php echo $mostrar['correo_p']?></td>
                         <td class="celdas_tablas"><?php echo $mostrar['correo_m'] ?></td>
-
+                        <td class="celdas_tablas"><a href="../php/Reporte.php?matricula=<?php echo $mostrar['matricula'] ?>">Reporte</a></td>
+                        <td class="celdas_tablas"><a href="../php/Citatorio.php?matricula=<?php echo $mostrar['matricula'] ?>">Citatorio</a></td>
                     </tr>
       
 <?php
