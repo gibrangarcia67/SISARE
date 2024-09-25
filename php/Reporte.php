@@ -1,3 +1,11 @@
+<?php
+include("conexionsql.php");
+$matricula=$_GET["matricula"];
+$sql="SELECT * FROM alumnos WHERE matricula = '$matricula'";
+
+$result=mysqli_query($conexion,$sql);
+                    while($mostrar=mysqli_fetch_array($result)){
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +34,7 @@
             
             <p class="bold-2 space">P R E S E N T E</p>
             
-            <div>Por este medio se le informa que su hija (o)    <input type="text" class="textin" style="width: 25em;">     del grupo     <input type="text" class="textin" style="width: 2em;">    <input type="text" class="textin" style="width: 2em;"> ha</div>
+            <div>Por este medio se le informa que su hija (o)    <input type="text" class="textin" style="width: 25em;" value="<?php echo $mostrar['nombre'] ?>">     del grupo     <input type="text" class="textin" style="width: 2em;" value="<?php echo $mostrar['grupo'] ?>">    <input type="text" class="textin" style="width: 2em;"> ha</div>
             <div>sido reportada (o) por presentar la o las situaciones señaladas:</div>
             
             <div class="sit">
@@ -74,3 +82,6 @@
 
 </body>
 </html>
+<?php
+                    }
+?>
