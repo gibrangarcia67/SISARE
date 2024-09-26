@@ -1,3 +1,13 @@
+<?php
+include("conexionsql.php");
+$matricula=$_GET["matricula"];
+$sql="SELECT * FROM alumnos WHERE matricula = '$matricula'";
+
+$result=mysqli_query($conexion,$sql);
+                    while($mostrar=mysqli_fetch_array($result)){
+                        $semestre = substr($mostrar['grupo'], 0, 1);
+                        $grupo = substr($mostrar['grupo'], 1);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +29,7 @@
             <p class="bold-2 space" style="margin: 2em 0;">P R E S E N T E</p>
             
             <div class="center" style="word-spacing:.79em;">Con la finalidad de tratar asuntos relacionados con la educación de su hija (o)</div>
-            <div class="center" style="word-spacing: .52em;"><input type="text" class="textin" style="width: 18em;"> quien cursa el semestre <input type="text" class="textin" style="width: 4em;"> Por medio de este </div>
+            <div class="center" style="word-spacing: .52em;"><input type="text" class="textin" style="width: 18em;" value="<?php echo $mostrar['nombre'] ?>"> quien cursa el semestre <input type="text" class="textin" style="width: 4em;" value="<?php echo $semestre ?>"> Por medio de este </div>
             <div class="center" style="word-spacing:.231em;">conducto me permito girarle el presente, para que tenga usted el bien de acudir a cita con </div>
             <div style="margin: .8em 0 .8em 0em;">el departamento de orientación el día <input type="text" class="textin" style="width: 2em;">/<input type="text" class="textin" style="width: 2em;">/<input type="text" class="textin" style="width: 2em;"> a las <input type="text" class="textin" style="width: 2em;"> <input type="text" class="textin" style="width: 2em;"> hrs.</div>
             
@@ -49,3 +59,6 @@
 
 </body>
 </html>
+<?php
+                    }
+?>
