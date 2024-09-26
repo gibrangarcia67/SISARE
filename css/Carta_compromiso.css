@@ -10,6 +10,43 @@
     font-style: normal;
     font-size: 14px;
 }
+.menu{
+    width:  98.9vw;
+    height: 10vh;
+    background-color: #8b3535;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 2em;
+}
+.menu .optionsmenu{
+    height: 100%;
+    width: max-content;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+}
+.amenu{
+    height: 100%;
+    width: max-content;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.optionsmenu_img{
+    height: 100%;
+}
+.menu img,.optionsmenu_img{
+    height: 35%;
+
+    object-fit: contain;
+}
+
 .main{
     width: 98.9vw;
     height: max-content;

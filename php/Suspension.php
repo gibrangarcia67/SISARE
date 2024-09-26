@@ -8,6 +8,21 @@
 </head>
 <body>
     
+    <div class="menu">
+        <a href="" class="amenu">
+            <img src="../icons/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png" alt="" class="optionsmenu_img">
+        </a>
+
+        <div class="optionsmenu">
+            <a href="" class="amenu">
+                <img src="../icons/imprimir-contorno-del-boton.png" alt="" class="optionsmenu_img">
+            </a>
+            <a href="" class="amenu">
+                <img src="../icons/cheque.png" alt="" class="optionsmenu_img">
+            </a>
+        </div>
+    </div>
+
     <div class="main">
         <div class="main_box">
             <img src="../img/EncabezadoReporte.jpg" alt="" class="main_box_headerimg">
