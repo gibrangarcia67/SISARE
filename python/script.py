@@ -59,11 +59,14 @@ for hoja in xls.sheet_names:
             # Los correos se dejarán vacíos
             correo_p = ""  # Correo del padre
             correo_m = ""  # Correo de la madre
+            nombre_p = ""
+            nombre_m = ""
             
             # Iniciar los conteos en 0
             cantidad_r = 0
             cantidad_s = 0
             cantidad_c = 0
+            cantidad_cc = 0
 
             # Verificar si la matrícula ya existe en la base de datos
             cursor.execute(consulta_verificacion, (matricula,))
