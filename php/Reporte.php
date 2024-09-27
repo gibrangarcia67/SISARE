@@ -3,6 +3,7 @@ include("conexionsql.php");
 $matricula=$_GET["matricula"];
 $sql="SELECT * FROM alumnos WHERE matricula = '$matricula'";
 
+
 $result=mysqli_query($conexion,$sql);
                     while($mostrar=mysqli_fetch_array($result)){
                         $semestre = substr($mostrar['grupo'], 0, 1);

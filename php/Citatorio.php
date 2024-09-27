@@ -31,7 +31,7 @@ $result=mysqli_query($conexion,$sql);
             <div class="center" style="word-spacing:.79em;">Con la finalidad de tratar asuntos relacionados con la educación de su hija (o)</div>
             <div class="center" style="word-spacing: .52em;"><input type="text" class="textin" style="width: 18em;" value="<?php echo $mostrar['nombre'] ?>"> quien cursa el semestre <input type="text" class="textin" style="width: 4em;" value="<?php echo $semestre ?>"> Por medio de este </div>
             <div class="center" style="word-spacing:.231em;">conducto me permito girarle el presente, para que tenga usted el bien de acudir a cita con </div>
-            <div style="margin: .8em 0 .8em 0em;">el departamento de orientación el día <input type="text" class="textin" style="width: 2em;">/<input type="text" class="textin" style="width: 2em;">/<input type="text" class="textin" style="width: 2em;"> a las <input type="text" class="textin" style="width: 2em;"> <input type="text" class="textin" style="width: 2em;"> hrs.</div>
+            <div style="margin: .8em 0 .8em 0em;">el departamento de orientación el día <input type="text" class="textin" style="width: 2em;">/<input type="text" class="textin" style="width: 2em;">/<input type="text" class="textin" style="width: 2em;"> a las <input type="text" class="textin" style="width: 2em;">:<input type="text" class="textin" style="width: 2em;"> hrs.</div>
             
             <div class="center" style="word-spacing:.6em;margin-top: 3em;">Por la importancia a este llamado, le pedimos su puntualidad y asistencia; sin otro </div>
             <div style="word-spacing:.6em;">particular agradecemos su asistencia y reciba un cordial saludo.</div>
