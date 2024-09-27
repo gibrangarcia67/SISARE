@@ -38,7 +38,7 @@ $result=mysqli_query($conexion,$sql);
     <div class="main">
         <div class="main_box">
             <img src="../img/EncabezadoReporte.jpg" alt="" class="main_box_headerimg">
-            <form action="insertarR.php"method="POST" id="formReporte">
+            <form action="insertarR.php" method="POST" id="formReporte">
             <div class="date"> Cd. Victoria Tamaulipas<input type="number" class="indate" id="dia_e" name="dia_e" required>/<input type="number" class="indate" id="mes_e" name="mes_e" required>/<input type="number" class="indate" id="ano_e" name="ano_e" required></div>
             
             <p class="bold">Reporte</p>
@@ -59,21 +59,22 @@ $result=mysqli_query($conexion,$sql);
 
             
             <div class="sit">
-            <div class="opc2"><input name="sit" type="radio" name="motivo" value="No trae tarea" required>No trae tarea.</div>
-            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Faltarle al respeto a un maestro, prefecto o personal administrativo" required>Faltarle al respeto a un maestro, prefecto o personal administrativo.</div>
-            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Salirse del salón de clases, sin autorización" required>Salirse del salón de clases, sin autorización.</div>
-            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Faltarle al respeto a sus compañeros" required>Faltarle al respeto a sus compañeros.</div>
-            <div class="opc2"><input name="sit" type="radio" name="motivo" value="No trabaja en el aula" required>No trabaja en el aula.</div>
-            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Destruir el mobiliario o causar daños en el edificio escolar" required>Destruir el mobiliario o causar daños en el edificio escolar.</div>
-            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia" required>Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia.</div>
-            <div class="opc2"><input name="sit" type="radio" name="motivo" value="No trae corte de cabello natural" required>No trae corte de cabello natural.</div>
-            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Otros" required>Otros.</div>
+            <div class="opc2"><input type="radio" name="motivo" value="No trae tarea">No trae tarea.</div>
+            <div class="opc2"><input type="radio" name="motivo" value="Faltarle al respeto a un maestro, prefecto o personal administrativo">Faltarle al respeto a un maestro, prefecto o personal administrativo.</div>
+            <div class="opc2"><input type="radio" name="motivo" value="Salirse del salón de clases, sin autorización">Salirse del salón de clases, sin autorización.</div>
+            <div class="opc2"><input type="radio" name="motivo" value="Faltarle al respeto a sus compañeros">Faltarle al respeto a sus compañeros.</div>
+            <div class="opc2"><input type="radio" name="motivo" value="No trabaja en el aula">No trabaja en el aula.</div>
+            <div class="opc2"><input type="radio" name="motivo" value="Destruir el mobiliario o causar daños en el edificio escolar">Destruir el mobiliario o causar daños en el edificio escolar.</div>
+            <div class="opc2"><input type="radio" name="motivo" value="Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia">Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia.</div>
+            <div class="opc2"><input type="radio" name="motivo" value="No trae corte de cabello natural">No trae corte de cabello natural.</div>
+            
 
             </div>
+            
+            
+            <textarea name="motivo2" cols="30" rows="7" class="textarea"></textarea>
             <input type="number" value="<?php echo $matricula ?>" hidden name="matricula">
             </form>
-            <textarea name="motivo" id="" cols="30" rows="10" class="textarea"></textarea>
-            
             <div>Por lo que le solicitamos su apoyo para tratar asunto con su hija (o) y dar la solución a la problemática enfrentada.</div>
             
             <div class="box">
@@ -117,13 +118,13 @@ var dia = fechaActual.getDate();
 var mes = fechaActual.getMonth() + 1;
 var ano = fechaActual.getFullYear();
 
-document.getElementById("dia").value = dia;
-document.getElementById("mes").value = mes;
-document.getElementById("ano").value = ano;
+document.getElementById("dia_e").value = dia;
+document.getElementById("mes_e").value = mes;
+document.getElementById("ano_e").value = ano;
 
 document.getElementById("enviarFormulario").addEventListener("click", function(event) {
             event.preventDefault();  // Evitar la acción por defecto del enlace
-            document.getElementById("miFormulario").submit();  // Enviar el formulario
+            document.getElementById("formReporte").submit();  // Enviar el formulario
         });
 
 </script> 

@@ -39,6 +39,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
         <?php 
         if($mostrar['cantidad_r']!=0 || $mostrar['cantidad_c']!=0 || $mostrar['cantidad_s']!=0 || $mostrar['cantidad_cc']!=0){
         if($mostrar['cantidad_r']==0){}else{ ?>
+        
         <div class="container-fluid px-4">
             <div class="card mb-4">
                 <div class="card-header">
@@ -64,9 +65,9 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
-                                    <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e'] . " " . $row['hora'] ?></td>
+                                    <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e'];?></td>
                                     <td><?php echo $row['motivo'] ?></td>
-                                    <td> <a href="eliminarR.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"></a></td>
+                                    <td> <a href="eliminarR.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
                                 </tr>
                             <?php
                             }
@@ -98,7 +99,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                         </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT * FROM reportes WHERE matricula='$matricula'";
+                            $sql = "SELECT * FROM citatorios WHERE matricula='$matricula'";
                             $result = mysqli_query($conexion, $sql);
 
                             while ($row = mysqli_fetch_array($result)) {
@@ -106,7 +107,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                                 <tr>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['ano_e'] ?></td>
                                     <td><?php echo $row['dia_c'] . "/" . $row['mes_c']. "/". $row['ano_c'] ?></td>
-                                    <td> <a href="eliminarC.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"></a></td>
+                                    <td> <a href="eliminarC.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
                                 </tr>
                             <?php
                             }
@@ -151,7 +152,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                                     <td><?php echo $row['grupo'] ?></td>
                                     <td><?php echo $row['dia_i'] . "/" . $row['mes_i']. "/". $row['mes_i'] ?></td>
                                     <td><?php echo $row['dia_f'] . "/" . $row['mes_f']. "/". $row['mes_f'] ?></td>
-                                    <td> <a href="eliminarS.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"> Eliminar </a></td>
+                                    <td><a href="eliminarS.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
 
                                 </tr>
                             <?php
@@ -191,7 +192,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                                 <tr>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e']; ?></td>
                                     <td><?php echo $row['tutor']; ?></td>
-                                    <td> <a href="eliminarCC.php?id=<?php echo $row['Id_carta']; ?>&matricula=<?php echo $matricula; ?>">Eliminar </a></td>
+                                    <td> <a href="eliminarCC.php?id=<?php echo $row['Id_carta']; ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
                                 </tr    
                             <?php
                             }
@@ -227,17 +228,18 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             <tr>
                                 <th>Crear Reporte</th>
                                 <th>Crear Citatorio</th>
-                                <th>Suspension</th>
+                                <th>Crear Suspension</th>
                                 <th>Carta Compromiso</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td class="celdas_tablas"><a href="Reporte.php?matricula=<?php echo $matricula; ?>">Reporte</a></td>
-                                <td class="celdas_tablas"><a href="Citatorio.php?matricula=<?php echo $matricula; ?>">Citatorio</a></td>
-                                <td class="celdas_tablas"><a href="Suspension.php?matricula=<?php echo $matricula; ?>">Suspension</a></td>
-                                <td class="celdas_tablas"><a href="Carta_compromiso.php?matricula=<?php echo $matricula; ?>">Carta Compromiso</a></td>                            
+                                <td class="celdas_tablas"><a href="Reporte.php?matricula=<?php echo $matricula; ?>"><center><img src="../icons/agregar.png" width="40px"></center></a></td>
+                                <td class="celdas_tablas"><a href="Citatorio.php?matricula=<?php echo $matricula; ?>"><center><img src="../icons/agregar.png" width="40px"></center></a></td>
+                                <td class="celdas_tablas"><a href="Suspension.php?matricula=<?php echo $matricula; ?>"><center><img src="../icons/agregar.png" width="40px"></center></a></td>
+                                <td class="celdas_tablas"><a href="Carta_compromiso.php?matricula=<?php echo $matricula; ?>"><center><img src="../icons/agregar.png" width="40px"></center></a></td>                            
                             </tr>
+                            
                             <?php
                             }
                             ?>
@@ -246,7 +248,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                 </div>
             </div>
         </div>
-
+        
         </main>
         </div>
                         </div>
