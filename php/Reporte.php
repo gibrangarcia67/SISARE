@@ -21,7 +21,7 @@ $result=mysqli_query($conexion,$sql);
 <body>
  
     <div class="menu">
-        <a href="" class="amenu">
+        <a href="expediente.php?matricula=<?php echo $matricula ?>" class="amenu">
             <img src="../icons/esquema-de-boton-circular-de-flecha-hacia-atras-izquierda.png" alt="" class="optionsmenu_img">
         </a>
 
@@ -29,7 +29,7 @@ $result=mysqli_query($conexion,$sql);
             <a href="" class="amenu">
                 <img src="../icons/imprimir-contorno-del-boton.png" alt="" class="optionsmenu_img">
             </a>
-            <a href="" class="amenu">
+            <a href="#" class="amenu" id="enviarFormulario">
                 <img src="../icons/cheque.png" alt="" class="optionsmenu_img">
             </a>
         </div>
@@ -38,37 +38,41 @@ $result=mysqli_query($conexion,$sql);
     <div class="main">
         <div class="main_box">
             <img src="../img/EncabezadoReporte.jpg" alt="" class="main_box_headerimg">
-            
-            <div class="date"> Cd. Victoria Tamaulipas<input type="number" class="indate" id="dia">/<input type="number" class="indate" id="mes">/<input type="number" class="indate" id="ano"></div>
+            <form action="insertarR.php"method="POST" id="formReporte">
+            <div class="date"> Cd. Victoria Tamaulipas<input type="number" class="indate" id="dia_e" name="dia_e" required>/<input type="number" class="indate" id="mes_e" name="mes_e" required>/<input type="number" class="indate" id="ano_e" name="ano_e" required></div>
             
             <p class="bold">Reporte</p>
             
             <div class="grade">
-                <div class="opc"><input name="grade" type="radio" <?php if($mostrar['cantidad_r'] == 0){ echo "checked"; } ?>>Primero</div>
-                <div class="opc"><input name="grade" type="radio" <?php if($mostrar['cantidad_r'] == 1){ echo "checked"; } ?>>Segundo</div>
-                <div class="opc"><input name="grade" type="radio" <?php if($mostrar['cantidad_r'] == 2){ echo "checked"; } ?>>Tercero</div>
+
+                <div class="opc"><input name="grade" type="radio" <?php if($mostrar['cantidad_r'] == 0 || $mostrar['cantidad_r'] == 3 || $mostrar['cantidad_r'] == 6 || $mostrar['cantidad_r'] == 9){ echo "checked"; } ?>>Primero</div>
+                <div class="opc"><input name="grade" type="radio" <?php if($mostrar['cantidad_r'] == 1 || $mostrar['cantidad_r'] == 4 || $mostrar['cantidad_r'] == 7 || $mostrar['cantidad_r'] == 10){ echo "checked"; } ?>>Segundo</div>
+                <div class="opc"><input name="grade" type="radio" <?php if($mostrar['cantidad_r'] == 2 || $mostrar['cantidad_r'] == 5 || $mostrar['cantidad_r'] == 8 || $mostrar['cantidad_r'] == 11){ echo "checked"; } ?>>Tercero</div>
                     </div>
             
             <p class="bold-2">SR. (A) PADRE DE FAMILIA O TUTOR</p>
             
             <p class="bold-2 space">P R E S E N T E</p>
             
-            <div>Por este medio se le informa que su hija (o)    <input type="text" class="textin" style="width: 25em;" value="<?php echo $mostrar['nombre'] ?>">     del grupo     <input type="text" class="textin" style="width: 2em;" value="<?php echo $semestre ?>"> <input type="text" class="textin" style="width: 2em;" value="<?php echo $grupo ?>">  ha</div>
+            <div>Por este medio se le informa que su hija (o)    <input type="text" class="textin" style="width: 25em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" required>     del grupo     <input type="text" class="textin" style="width: 2em;" value="<?php echo $semestre ?>" id="semestre" name="semestre" required> <input type="text" class="textin" style="width: 2em;" value="<?php echo $grupo ?>" id="grupo" name="grupo" required>  ha</div>
             <div>sido reportada (o) por presentar la o las situaciones señaladas:</div>
+
             
             <div class="sit">
-                <div class="opc2"><input name="sit" type="radio">No trae tarea.</div>
-                <div class="opc2"><input name="sit" type="radio">Faltarle al respeto a un maestro, prefecto o personal administrativo.</div>
-                <div class="opc2"><input name="sit" type="radio">Salirse del salón de clases, sin autorización.</div>
-                <div class="opc2"><input name="sit" type="radio">Faltarle al respeto a sus compañeros.</div>
-                <div class="opc2"><input name="sit" type="radio">No trabajar en el aula.</div>
-                <div class="opc2"><input name="sit" type="radio">Destruir el mobiliario o causar daños en el edificio escolar.</div>
-                <div class="opc2"><input name="sit" type="radio">Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia.</div>
-                <div class="opc2"><input name="sit" type="radio">No trae corte de cabello natural.</div>
-                <div class="opc2"><input name="sit" type="radio" checked>Otros.</div>
+            <div class="opc2"><input name="sit" type="radio" name="motivo" value="No trae tarea" required>No trae tarea.</div>
+            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Faltarle al respeto a un maestro, prefecto o personal administrativo" required>Faltarle al respeto a un maestro, prefecto o personal administrativo.</div>
+            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Salirse del salón de clases, sin autorización" required>Salirse del salón de clases, sin autorización.</div>
+            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Faltarle al respeto a sus compañeros" required>Faltarle al respeto a sus compañeros.</div>
+            <div class="opc2"><input name="sit" type="radio" name="motivo" value="No trabaja en el aula" required>No trabaja en el aula.</div>
+            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Destruir el mobiliario o causar daños en el edificio escolar" required>Destruir el mobiliario o causar daños en el edificio escolar.</div>
+            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia" required>Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia.</div>
+            <div class="opc2"><input name="sit" type="radio" name="motivo" value="No trae corte de cabello natural" required>No trae corte de cabello natural.</div>
+            <div class="opc2"><input name="sit" type="radio" name="motivo" value="Otros" required>Otros.</div>
+
             </div>
-            
-            <textarea name="" id="" cols="30" rows="10" class="textarea"></textarea>
+            <input type="number" value="<?php echo $matricula ?>" hidden name="matricula">
+            </form>
+            <textarea name="motivo" id="" cols="30" rows="10" class="textarea"></textarea>
             
             <div>Por lo que le solicitamos su apoyo para tratar asunto con su hija (o) y dar la solución a la problemática enfrentada.</div>
             
@@ -116,4 +120,10 @@ var ano = fechaActual.getFullYear();
 document.getElementById("dia").value = dia;
 document.getElementById("mes").value = mes;
 document.getElementById("ano").value = ano;
+
+document.getElementById("enviarFormulario").addEventListener("click", function(event) {
+            event.preventDefault();  // Evitar la acción por defecto del enlace
+            document.getElementById("miFormulario").submit();  // Enviar el formulario
+        });
+
 </script> 

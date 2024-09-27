@@ -28,6 +28,13 @@ $grupo=$_POST['semestre'].$_POST['grupo'];
 
 $vladimir="INSERT INTO suspensiones VALUES('','$dia_i','$mes_i','$ano_i','$dia_f','$mes_f','$ano_f','$grupo','$especialidad','$dia_e','$mes_e','$ano_e','$matricula')";
 
-$resultado=mysqli_query($conexion,$vladimir);
+if($resultado=mysqli_query($conexion,$vladimir)){
+    $resultado2 = $conexion->query("SELECT COUNT(*) FROM suspensiones WHERE matricula = '$matricula'");
+    $count = $resultado2->fetch_row()[0];
+    $salvador="UPDATE alumnos SET cantidad_s='$count' WHERE matricula='$matricula'";
+    if($resultado3=mysqli_query($conexion,$salvador)){header("location: expediente.php?matricula=$matricula");}
+
+}
+
 
 } else{echo "<script>alert('Favor de llenar todos los datos'); window.history.go(-1);</script>";}

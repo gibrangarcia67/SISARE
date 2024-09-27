@@ -51,6 +51,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             <tr>
                                 <th>Fecha</th>                                
                                 <th>Motivo</th>
+                                <th>Eliminar</th>
                                 
 
                             </tr>
@@ -64,7 +65,8 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             ?>
                                 <tr>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e'] . " " . $row['hora'] ?></td>
-                                    <th><?php echo $row['motivo'] ?></th>
+                                    <td><?php echo $row['motivo'] ?></td>
+                                    <td> <a href="eliminarR.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"></a></td>
                                 </tr>
                             <?php
                             }
@@ -88,7 +90,9 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                         <thead>
                             <tr>
                                 <th>Fecha de Emision</th>  
-                                <th>Fecha de Cita</th>                               
+                                <th>Fecha de Cita</th> 
+                                <th>Eliminar</th> 
+
 
                             </tr>
                         </thead>
@@ -102,6 +106,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                                 <tr>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['ano_e'] ?></td>
                                     <td><?php echo $row['dia_c'] . "/" . $row['mes_c']. "/". $row['ano_c'] ?></td>
+                                    <td> <a href="eliminarC.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"></a></td>
                                 </tr>
                             <?php
                             }
@@ -129,6 +134,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                                 <th>Grupo</th>
                                 <th>Fecha Inicio</th>                               
                                 <th>Fecha Fin</th> 
+                                <th>Eliminar</th>
                                  
                             </tr>
                         </thead>
@@ -145,7 +151,8 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                                     <td><?php echo $row['grupo'] ?></td>
                                     <td><?php echo $row['dia_i'] . "/" . $row['mes_i']. "/". $row['mes_i'] ?></td>
                                     <td><?php echo $row['dia_f'] . "/" . $row['mes_f']. "/". $row['mes_f'] ?></td>
-                                    
+                                    <td> <a href="eliminarS.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"> Eliminar </a></td>
+
                                 </tr>
                             <?php
                             }
@@ -169,7 +176,8 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                         <thead>
                             <tr>
                                 <th>Fecha</th>
-                                <th>Tutor</th>                               
+                                <th>Tutor</th>  
+                                <th>Eliminar</th>                             
 
                             </tr>
                         </thead>
@@ -181,9 +189,10 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
-                                    <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e'] ?></td>
-                                    <td><?php echo $row['tutor'] ?></td>
-                                </tr>
+                                    <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e']; ?></td>
+                                    <td><?php echo $row['tutor']; ?></td>
+                                    <td> <a href="eliminarCC.php?id=<?php echo $row['Id_carta']; ?>&matricula=<?php echo $matricula; ?>">Eliminar </a></td>
+                                </tr    
                             <?php
                             }
                             ?>
