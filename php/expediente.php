@@ -34,7 +34,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
             <p><a href="../php/mostrarAlumnos.php?e=COMPONENTE BASICO Y PROPEDEUTICO">Curso propedeutico</a></p>
         </div>
         <main>
-       
+        
         <br>
         <?php 
         if($mostrar['cantidad_r']!=0 || $mostrar['cantidad_c']!=0 || $mostrar['cantidad_s']!=0 || $mostrar['cantidad_cc']!=0){
@@ -223,32 +223,21 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                     <b><?php echo $mostrar['matricula'], "- ", $mostrar['nombre']; ?></b>
                 </div>
                 <div class="card-body">
-                    <table id="datatablesSimple" class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Crear Reporte</th>
-                                <th>Crear Citatorio</th>
-                                <th>Crear Suspension</th>
-                                <th>Carta Compromiso</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="celdas_tablas"><a href="Reporte.php?matricula=<?php echo $matricula; ?>"><center><img src="../icons/agregar.png" width="40px"></center></a></td>
-                                <td class="celdas_tablas"><a href="Citatorio.php?matricula=<?php echo $matricula; ?>"><center><img src="../icons/agregar.png" width="40px"></center></a></td>
-                                <td class="celdas_tablas"><a href="Suspension.php?matricula=<?php echo $matricula; ?>"><center><img src="../icons/agregar.png" width="40px"></center></a></td>
-                                <td class="celdas_tablas"><a href="Carta_compromiso.php?matricula=<?php echo $matricula; ?>"><center><img src="../icons/agregar.png" width="40px"></center></a></td>                            
-                            </tr>
-                            
+                    <table border="2">
+                            <th>
+                                <td class="celdas_tablas"><a href="Reporte.php?matricula=<?php echo $matricula; ?>"><center>Crear Reporte</center></a></td>
+                                <td class="celdas_tablas"><a href="Citatorio.php?matricula=<?php echo $matricula; ?>">Crear Citatorio</center></a></td>
+                                <td class="celdas_tablas"><a href="Suspension.php?matricula=<?php echo $matricula; ?>"><center>Crear Suspension</center></a></td>
+                                <td class="celdas_tablas"><a href="Carta_compromiso.php?matricula=<?php echo $matricula; ?>"><center>Carta Compromiso</center></a></td>                            
+                            </th>
                             <?php
                             }
                             ?>
-                        </tbody>
+                        
                     </table>
                 </div>
             </div>
         </div>
-        
         </main>
         </div>
                         </div>

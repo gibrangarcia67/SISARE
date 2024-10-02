@@ -8,6 +8,7 @@ $result=mysqli_query($conexion,$sql);
                     while($mostrar=mysqli_fetch_array($result)){
                         $semestre = substr($mostrar['grupo'], 0, 1);
                         $grupo = substr($mostrar['grupo'], 1);
+                        $genero = $mostrar['genero'];
 ?>      
       
 <!DOCTYPE html>
@@ -39,40 +40,39 @@ $result=mysqli_query($conexion,$sql);
         <div class="main_box">
             <img src="../img/EncabezadoReporte.jpg" alt="" class="main_box_headerimg">
             <form action="insertarR.php" method="POST" id="formReporte">
-            <div class="date"> Cd. Victoria Tamaulipas<input type="number" class="indate" id="dia_e" name="dia_e" required>/<input type="number" class="indate" id="mes_e" name="mes_e" required>/<input type="number" class="indate" id="ano_e" name="ano_e" required></div>
+            <div class="date"> Cd. Victoria Tamaulipas<input type="text" class="indate" id="dia_e" name="dia_e" readonly>/<input type="text" class="indate" id="mes_e" name="mes_e" readonly>/<input type="text" class="indate" id="ano_e" name="ano_e" readonly></div>
             
             <p class="bold">Reporte</p>
             
             <div class="grade">
 
-                <div class="opc"><input name="grade" type="radio" <?php if($mostrar['cantidad_r'] == 0 || $mostrar['cantidad_r'] == 3 || $mostrar['cantidad_r'] == 6 || $mostrar['cantidad_r'] == 9){ echo "checked"; } ?>>Primero</div>
-                <div class="opc"><input name="grade" type="radio" <?php if($mostrar['cantidad_r'] == 1 || $mostrar['cantidad_r'] == 4 || $mostrar['cantidad_r'] == 7 || $mostrar['cantidad_r'] == 10){ echo "checked"; } ?>>Segundo</div>
-                <div class="opc"><input name="grade" type="radio" <?php if($mostrar['cantidad_r'] == 2 || $mostrar['cantidad_r'] == 5 || $mostrar['cantidad_r'] == 8 || $mostrar['cantidad_r'] == 11){ echo "checked"; } ?>>Tercero</div>
+                <div class="opc"><input name="grade" id="grade" type="radio" <?php if($mostrar['cantidad_r'] == 0 || $mostrar['cantidad_r'] == 3 || $mostrar['cantidad_r'] == 6 || $mostrar['cantidad_r'] == 9){ echo "checked"; }else{ echo "disabled"; } ?>>Primero</div>
+                <div class="opc"><input name="grade" id="grade" type="radio" <?php if($mostrar['cantidad_r'] == 1 || $mostrar['cantidad_r'] == 4 || $mostrar['cantidad_r'] == 7 || $mostrar['cantidad_r'] == 10){ echo "checked"; }else{ echo "disabled"; } ?>>Segundo</div>
+                <div class="opc"><input name="grade" id="grade" type="radio" <?php if($mostrar['cantidad_r'] == 2 || $mostrar['cantidad_r'] == 5 || $mostrar['cantidad_r'] == 8 || $mostrar['cantidad_r'] == 11){ echo "checked"; }else{ echo "disabled"; } ?>>Tercero</div>
                     </div>
             
             <p class="bold-2">SR. (A) PADRE DE FAMILIA O TUTOR</p>
             
             <p class="bold-2 space">P R E S E N T E</p>
             
-            <div>Por este medio se le informa que su hija (o)    <input type="text" class="textin" style="width: 25em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" required>     del grupo     <input type="text" class="textin" style="width: 2em;" value="<?php echo $semestre ?>" id="semestre" name="semestre" required> <input type="text" class="textin" style="width: 2em;" value="<?php echo $grupo ?>" id="grupo" name="grupo" required>  ha</div>
+            <div>Por este medio se le informa que su hija (o)    <input type="text" class="textin" style="width: 25em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" readonly>     del grupo     <input type="number" class="textin" style="width: 2em;" value="<?php echo $semestre ?>" id="semestre" name="semestre" required> <input type="text" class="textin" style="width: 2em;" value="<?php echo $grupo ?>" id="grupo" name="grupo" required>  ha</div>
             <div>sido reportada (o) por presentar la o las situaciones señaladas:</div>
 
             
             <div class="sit">
-            <div class="opc2"><input type="radio" name="motivo" value="No trae tarea">No trae tarea.</div>
-            <div class="opc2"><input type="radio" name="motivo" value="Faltarle al respeto a un maestro, prefecto o personal administrativo">Faltarle al respeto a un maestro, prefecto o personal administrativo.</div>
-            <div class="opc2"><input type="radio" name="motivo" value="Salirse del salón de clases, sin autorización">Salirse del salón de clases, sin autorización.</div>
-            <div class="opc2"><input type="radio" name="motivo" value="Faltarle al respeto a sus compañeros">Faltarle al respeto a sus compañeros.</div>
-            <div class="opc2"><input type="radio" name="motivo" value="No trabaja en el aula">No trabaja en el aula.</div>
-            <div class="opc2"><input type="radio" name="motivo" value="Destruir el mobiliario o causar daños en el edificio escolar">Destruir el mobiliario o causar daños en el edificio escolar.</div>
-            <div class="opc2"><input type="radio" name="motivo" value="Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia">Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia.</div>
-            <div class="opc2"><input type="radio" name="motivo" value="No trae corte de cabello natural">No trae corte de cabello natural.</div>
-            
-
+            <div class="opc2"><input type="radio" name="motivo" id="motivo" value="No trae tarea">No trae tarea.</div>
+            <div class="opc2"><input type="radio" name="motivo" id="motivo" value="Faltarle al respeto a un maestro, prefecto o personal administrativo">Faltarle al respeto a un maestro, prefecto o personal administrativo.</div>
+            <div class="opc2"><input type="radio" name="motivo" id="motivo" value="Salirse del salón de clases, sin autorización">Salirse del salón de clases, sin autorización.</div>
+            <div class="opc2"><input type="radio" name="motivo" id="motivo" value="Faltarle al respeto a sus compañeros">Faltarle al respeto a sus compañeros.</div>
+            <div class="opc2"><input type="radio" name="motivo" id="motivo" value="No trabaja en el aula">No trabaja en el aula.</div>
+            <div class="opc2"><input type="radio" name="motivo" id="motivo" value="Destruir el mobiliario o causar daños en el edificio escolar">Destruir el mobiliario o causar daños en el edificio escolar.</div>
+            <div class="opc2"><input type="radio" name="motivo" id="motivo" value="Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia">Por no cumplir con el uniforme completo (zapatos) ni el recado del padre de familia.</div>
+            <div class="opc2"><input type="radio" name="motivo" id="motivo" value="No trae corte de cabello natural">No trae corte de cabello natural.</div>
+            <div class="opc2"><input type="radio" name="motivo" id="motivo" value="Otro.">Otros.</div>            
             </div>
             
             
-            <textarea name="motivo2" cols="30" rows="7" class="textarea"></textarea>
+            <textarea name="motivo2" cols="30" rows="5" class="textarea"></textarea>
             <input type="number" value="<?php echo $matricula ?>" hidden name="matricula">
             </form>
             <div>Por lo que le solicitamos su apoyo para tratar asunto con su hija (o) y dar la solución a la problemática enfrentada.</div>
@@ -107,7 +107,10 @@ $result=mysqli_query($conexion,$sql);
 </body>
 </html>
 <?php
-                    }
+$cantidad_r = $mostrar['cantidad_r'];
+}
+                    
+                    
 ?>
 <script type="text/javascript">
 
@@ -122,9 +125,43 @@ document.getElementById("dia_e").value = dia;
 document.getElementById("mes_e").value = mes;
 document.getElementById("ano_e").value = ano;
 
+
 document.getElementById("enviarFormulario").addEventListener("click", function(event) {
-            event.preventDefault();  // Evitar la acción por defecto del enlace
-            document.getElementById("formReporte").submit();  // Enviar el formulario
+            event.preventDefault();
+
+            var sem = document.getElementById("semestre").value;
+            var grupo = document.getElementById("grupo").value;
+            
+            var grupos = /^[A-H]+$/i;
+            var semestres = /^[1-6]+$/;
+
+            var r1 = grupos.test(grupo);
+            var r2 = semestres.test(sem);
+
+            if(document.getElementById("semestre").value == ""){
+                alert("Ingresa el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+            }else if(r2 != true){
+                alert("Ingresa correctamente el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+            }
+
+            if(document.getElementById("grupo").value == ""){
+                alert("Ingresa el grupo <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+            }else if(r1 != true){
+                alert("Ingresa correctamente el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+            }
+
+
+            //Enviar form
+            if(r1 == true && r2 == true){
+                document.getElementById("formReporte").submit(); 
+            }
+
+
+             
         });
 
 </script> 

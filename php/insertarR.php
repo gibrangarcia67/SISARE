@@ -10,17 +10,41 @@ $mes_e=$_POST['mes_e'];
 $ano_e=$_POST['ano_e'];
 $nombre=$_POST['nombre'];
 
-if(!empty($_POST['motivo'])) {
-    
-    $motivo = $_POST['motivo'];
-} else if(!empty($_POST['motivo2'])) {
-    
-    $motivo = $_POST['motivo2'];
+if (!empty($_POST['motivo'])) {
+    // Verificamos si seleccionaron "Otro."
+    if ($_POST['motivo'] == "Otro.") {
+        // Si es "Otro.", pero no han escrito en el textarea, mostramos un error
+        if (empty($_POST['motivo2'])) {
+            echo "<script>alert('Favor de escribir el otro motivo'); window.history.go(-1);</script>";
+            exit();
+        } else {
+            // Si seleccionaron "Otro." y escribieron algo en el textarea, usamos el textarea
+            $motivo = $_POST['motivo2'];
+        }
+    } else {
+        // Si seleccionaron una opción predefinida y también escribieron en el textarea
+        if (!empty($_POST['motivo2'])) {
+            echo "<script>alert('Favor de seleccionar solo un motivo (predefinido o escribir en el campo de texto), no ambos'); window.history.go(-1);</script>";
+            exit();
+        } else {
+            // Si seleccionaron una opción predefinida y el textarea está vacío, usamos el motivo predefinido
+            $motivo = $_POST['motivo'];
+        }
+    }
+} elseif (!empty($_POST['motivo2'])) {
+    // Si no seleccionaron ninguna opción predefinida pero escribieron en el textarea
+    echo "<script>alert('Favor de seleccionar la opción \"Otros.\" para escribir un motivo personalizado'); window.history.go(-1);</script>";
+    exit();
 } else {
-    
-    echo "<script>alert('Favor selecciona o describe un motivo'); window.history.go(-1);</script>";
-    exit(); 
+    // Si no seleccionaron nada, mostramos un error
+    echo "<script>alert('Favor de seleccionar un motivo'); window.history.go(-1);</script>";
+    exit();
 }
+
+
+
+
+
 
 
 
