@@ -8,7 +8,7 @@ $result=mysqli_query($conexion,$sql);
                     while($mostrar=mysqli_fetch_array($result)){
                         $semestre = substr($mostrar['grupo'], 0, 1);
                         $grupo = substr($mostrar['grupo'], 1);
-                        $genero = $mostrar['genero'];
+                        $genero = $mostrar['genero']; //Agregar la variable genero, todos los inputs deben de tener id, al mostrar los nombres y fecha ponerles "readonly" al final de los inputs
 ?>      
       
 <!DOCTYPE html>
@@ -129,15 +129,16 @@ document.getElementById("ano_e").value = ano;
 document.getElementById("enviarFormulario").addEventListener("click", function(event) {
             event.preventDefault();
 
-            var sem = document.getElementById("semestre").value;
+            var sem = document.getElementById("semestre").value;  //copiar
             var grupo = document.getElementById("grupo").value;
             
             var grupos = /^[A-H]+$/i;
-            var semestres = /^[1-6]+$/;
+            var semestres = /^[1-6]+$/; //para fechas, usar uno para dias 1-31, mes 1-12 , año 1-9 
 
-            var r1 = grupos.test(grupo);
+            var r1 = grupos.test(grupo);  //copiar
             var r2 = semestres.test(sem);
 
+            
             if(document.getElementById("semestre").value == ""){
                 alert("Ingresa el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
                 document.getElementById("semestre").value="<?php echo $semestre; ?>";
@@ -148,14 +149,14 @@ document.getElementById("enviarFormulario").addEventListener("click", function(e
 
             if(document.getElementById("grupo").value == ""){
                 alert("Ingresa el grupo <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
-                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+                document.getElementById("grupo").value="<?php echo $grupo; ?>";
             }else if(r1 != true){
-                alert("Ingresa correctamente el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
-                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+                alert("Ingresa correctamente el grupo <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("grupo").value="<?php echo $grupo; ?>";
             }
 
 
-            //Enviar form
+            //Enviar form   TAMBIEN AGREGAR
             if(r1 == true && r2 == true){
                 document.getElementById("formReporte").submit(); 
             }

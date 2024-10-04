@@ -7,6 +7,7 @@
                         while($mostrar=mysqli_fetch_array($result)){
                             $semestre = substr($mostrar['grupo'], 0, 1);
                             $grupo = substr($mostrar['grupo'], 1);
+                            $genero = $mostrar['genero']; //Agregar la variable genero, todos los inputs deben de tener id, al mostrar los nombres y fecha ponerles "readonly" al final de los inputs
     ?>      
 <!DOCTYPE html>
 <html lang="en">
@@ -37,7 +38,7 @@
         <div class="main_box">
             <img src="../img/EncabezadoReporte.jpg" alt="" class="main_box_headerimg">
             <form action="insertarS.php"method="POST" id="formSuspension">
-            <div class="date"> Cd. Victoria Tamaulipas<input type="number" class="indate" id="dia_e" name="dia_e" required>/<input type="number" class="indate" id="mes_e" name="mes_e" required>/<input type="number" class="indate" id="ano_e" name="ano_e" required></div>
+            <div class="date"> Cd. Victoria Tamaulipas<input type="number" class="indate" id="dia_e" name="dia_e" required readonly>/<input type="number" class="indate" id="mes_e" name="mes_e" required readonly>/<input type="number" class="indate" id="ano_e" name="ano_e" required readonly></div>
             
             <p class="bold">SUSPENSIÓN</p>
             
@@ -45,9 +46,9 @@
             
             <p class="bold-2" style="margin: 2em 0;">CCT: 28DCT0271F</p>
             
-            <div class="center" style="word-spacing: .17em;">Padre o madre de familia y/o tutor del alumna (o) <input type="text" class="textin" style="width: 22em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" required></div>
+            <div class="center" style="word-spacing: .17em;">Padre o madre de familia y/o tutor del alumna (o) <input type="text" class="textin" style="width: 22em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" required readonly></div>
             
-            <div class="center" style="word-spacing: .33em;">del grupo <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $semestre ?>" id="semestre" name="semestre" required> <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $grupo ?>" id="grupo" name="grupo" required> de la especialidad de <input type="text" class="textin" style="width: 15em;" value="<?php echo $mostrar['especialidad'] ?>" id="especialidad" name="especialidad" required>, por acumulación de</div>
+            <div class="center" style="word-spacing: .33em;">del grupo <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $semestre ?>" id="semestre" name="semestre" required> <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $grupo ?>" id="grupo" name="grupo" required> de la especialidad de <input type="text" class="textin" style="width: 15em;" value="<?php echo $mostrar['especialidad'] ?>" id="especialidad" name="especialidad" required readonly>, por acumulación de</div>
             
             <div class="center" style="word-spacing: .31em;">reportes, y de faltar al reglamento escolar del CBTis No. 271 en los artículos 39, inciso 7, y </div>
             
@@ -108,8 +109,42 @@ document.getElementById("mes_e").value = mes;
 document.getElementById("ano_e").value = ano;
 
 document.getElementById("enviarFormulario").addEventListener("click", function(event) {
-            event.preventDefault();  // Evitar la acción por defecto del enlace
-            document.getElementById("formSuspension").submit();  // Enviar el formulario
+            event.preventDefault();
+
+            var sem = document.getElementById("semestre").value;  //copiar
+            var grupo = document.getElementById("grupo").value;
+            
+            var grupos = /^[A-H]+$/i;
+            var semestres = /^[1-6]+$/; //para fechas, usar uno para dias 1-31, mes 1-12 , año 1-9 
+
+            var r1 = grupos.test(grupo);  //copiar
+            var r2 = semestres.test(sem);
+
+            
+            if(document.getElementById("semestre").value == ""){
+                alert("Ingresa el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+            }else if(r2 != true){
+                alert("Ingresa correctamente el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+            }
+
+            if(document.getElementById("grupo").value == ""){
+                alert("Ingresa el grupo <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("grupo").value="<?php echo $grupo; ?>";
+            }else if(r1 != true){
+                alert("Ingresa correctamente el grupo <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("grupo").value="<?php echo $grupo; ?>";
+            }
+
+
+            //Enviar form   TAMBIEN AGREGAR
+            if(r1 == true && r2 == true){
+                document.getElementById("formSuspension").submit(); 
+            }
+
+
+             
         });
 
 </script> 

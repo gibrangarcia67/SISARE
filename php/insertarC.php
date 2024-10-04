@@ -28,11 +28,7 @@ if($resultado=mysqli_query($conexion,$sql)){
 
     $sql2="UPDATE alumnos SET cantidad_c='$count' WHERE matricula='$matricula'";
 
-    if($resultado3=mysqli_query($conexion,$sql2)){
-        
-        header("location: expediente.php?matricula=$matricula");
-    
-    }
+    if($resultado3=mysqli_query($conexion,$sql2)){ header("location: expediente.php?matricula=$matricula");}
 }
 
 } else{echo "<script>alert('Favor de llenar todos los datos'); window.history.go(-1);</script>";}
