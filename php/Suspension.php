@@ -124,24 +124,25 @@ document.getElementById("enviarFormulario").addEventListener("click", function(e
             if(document.getElementById("semestre").value == ""){
                 alert("Ingresa el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
                 document.getElementById("semestre").value="<?php echo $semestre; ?>";
-            }else if(r2 != true){
+            }else if(r2 != true|| document.getElementById("semestre").value.length != 1){
                 alert("Ingresa correctamente el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
                 document.getElementById("semestre").value="<?php echo $semestre; ?>";
             }
 
+
             if(document.getElementById("grupo").value == ""){
-                alert("Ingresa el grupo <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                alert("Ingresa el grupo <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
                 document.getElementById("grupo").value="<?php echo $grupo; ?>";
-            }else if(r1 != true){
-                alert("Ingresa correctamente el grupo <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+            }else if(r1 != true || document.getElementById("grupo").value.length != 1){
+                alert("Ingresa correctamente el grupo <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
                 document.getElementById("grupo").value="<?php echo $grupo; ?>";
             }
 
-
-            //Enviar form   TAMBIEN AGREGAR
-            if(r1 == true && r2 == true){
+            
+            if(r1 == true && r2 == true && document.getElementById("semestre").value.length == 1 && document.getElementById("grupo").value.length == 1){
                 document.getElementById("formSuspension").submit(); 
             }
+
 
 
              

@@ -50,6 +50,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                     <table id="datatablesSimple" class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>Folio</th>
                                 <th>Fecha</th>                                
                                 <th>Motivo</th>
                                 <th>Eliminar</th>
@@ -65,9 +66,11 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
+                                    <td> <a href="Reporte.php"><?php echo $row['id'];?></a></td>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e'];?></td>
                                     <td><?php echo $row['motivo'] ?></td>
                                     <td> <a href="eliminarR.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
+                                
                                 </tr>
                             <?php
                             }
@@ -90,6 +93,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                     <table id="datatablesSimple" class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>Folio</th>
                                 <th>Fecha de Emision</th>  
                                 <th>Fecha de Cita</th> 
                                 <th>Eliminar</th> 
@@ -105,6 +109,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
+                                    <td> <a href="Reporte.php"><?php echo $row['id'];?></a></td>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['ano_e'] ?></td>
                                     <td><?php echo $row['dia_c'] . "/" . $row['mes_c']. "/". $row['ano_c'] ?></td>
                                     <td> <a href="eliminarC.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
@@ -130,7 +135,8 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                     <table id="datatablesSimple" class="table table-bordered">
                         <thead>
                             <tr>
-                            <th>Fecha Emision</th>
+                                <th>Folio</th>
+                                <th>Fecha Emision</th>
                                 <th>Especialidad</th>
                                 <th>Grupo</th>
                                 <th>Fecha Inicio</th>                               
@@ -147,6 +153,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
+                                <td> <a href="Reporte.php"><?php echo $row['id'];?></a></td>
                                 <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e'] ?></td>
                                     <td><?php echo $row['especialidad'] ?></td>
                                     <td><?php echo $row['grupo'] ?></td>
@@ -176,6 +183,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                     <table id="datatablesSimple" class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>Folio</th>
                                 <th>Fecha</th>
                                 <th>Tutor</th>  
                                 <th>Eliminar</th>                             
@@ -190,6 +198,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
+                                    <td> <a href="Reporte.php"><?php echo $row['id'];?></a></td>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e']; ?></td>
                                     <td><?php echo $row['tutor']; ?></td>
                                     <td> <a href="eliminarCC.php?id=<?php echo $row['Id_carta']; ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>

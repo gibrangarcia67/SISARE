@@ -145,7 +145,7 @@ document.getElementById("enviarFormulario").addEventListener("click", function(e
 
             //Enviar form   TAMBIEN AGREGAR
             
-            if(r1 == true && r2 == true && document.getElementById("semestre").value.length != 1 && document.getElementById("grupo").value.length != 1){
+            if(r1 == true && r2 == true && document.getElementById("semestre").value.length == 1 && document.getElementById("grupo").value.length == 1){
                 document.getElementById("formCartaCompromiso").submit(); 
             }
 
