@@ -33,7 +33,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
             <p><a href="../php/mostrarAlumnos.php?e=TRANSFORMACIÓN DE PLÁSTICOS">Transformación de Plásticos</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=COMPONENTE BASICO Y PROPEDEUTICO">Curso propedeutico</a></p>
         </div>
-        <main>
+        <main style="width: 85vw; overflow: auto;">
         
         <br>
         <?php 
