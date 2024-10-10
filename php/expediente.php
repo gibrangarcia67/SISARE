@@ -41,7 +41,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
         if($mostrar['cantidad_r']==0){}else{ ?>
         
         <div class="container-fluid px-4">
-            <div class="card mb-4" style="width: 75vw;">
+            <div class="card mb-4">
                 <div class="card-header">
                     
                     <b>Reportes</b>
