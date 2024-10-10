@@ -38,7 +38,11 @@
         <div class="main_box">
             <img src="../img/EncabezadoReporte.jpg" alt="" class="main_box_headerimg">
             <form action="insertarS.php"method="POST" id="formSuspension">
+<<<<<<< HEAD
             <div class="date"> Cd. Victoria Tamaulipas<input type="text" class="indate" id="dia_e" name="dia_e" required readonly>/<input type="text" class="indate" id="mes_e" name="mes_e" required readonly>/<input type="text" class="indate" id="ano_e" name="ano_e" required readonly style="width: 2.5em;"></div>
+=======
+            <div class="date"> Cd. Victoria Tamaulipas<input type="number" class="indate" id="dia_e" name="dia_e" required readonly>/<input type="number" class="indate" id="mes_e" name="mes_e" required readonly>/<input type="number" class="indate" id="ano_e" name="ano_e" required readonly></div>
+>>>>>>> 93c7326163c4d7e98ad533adcf6a9dd5729ed0f5
             
             <p class="bold">SUSPENSIÓN</p>
             
@@ -46,13 +50,23 @@
             
             <p class="bold-2" style="margin: 2em 0;">CCT: 28DCT0271F</p>
             
+<<<<<<< HEAD
             <div class="center" style="word-spacing: .56em;">Padre o madre de familia y/o tutor del alumna (o) <input type="text" class="textin" style="width: 22em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" required readonly></div>
             
             <div class="center" style="word-spacing: .04em;">del grupo <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $semestre ?>" id="semestre" name="semestre" required> <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $grupo ?>" id="grupo" name="grupo" required> de la especialidad de <input type="text" class="textin" style="width: 22em;" value="<?php echo $mostrar['especialidad'] ?>" id="especialidad" name="especialidad" required readonly>, por acumulación de</div>
+=======
+            <div class="center" style="word-spacing: .17em;">Padre o madre de familia y/o tutor del alumna (o) <input type="text" class="textin" style="width: 22em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" required readonly></div>
+            
+            <div class="center" style="word-spacing: .33em;">del grupo <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $semestre ?>" id="semestre" name="semestre" required> <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $grupo ?>" id="grupo" name="grupo" required> de la especialidad de <input type="text" class="textin" style="width: 15em;" value="<?php echo $mostrar['especialidad'] ?>" id="especialidad" name="especialidad" required readonly>, por acumulación de</div>
+>>>>>>> 93c7326163c4d7e98ad533adcf6a9dd5729ed0f5
             
             <div class="center" style="word-spacing: .54em;">reportes, y de faltar al reglamento escolar del CBTis No. 271 en los artículos 39, inciso 7, y </div>
             
+<<<<<<< HEAD
             <div class="center" style="word-spacing: .63em;">acumulación de reportes del reglamento escolar ha sido suspendida (o) a partir del <input type="text" class="textin" style="width: 1.5em;" id="dia_i" name="dia_i" required> /</div>
+=======
+            <div class="center" style="word-spacing: .35em;">acumulación de reportes del reglamento escolar ha sido suspendida (o) a partir del <input type="text" class="textin" style="width: 1.5em;" id="dia_i" name="dia_i" required> /</div>
+>>>>>>> 93c7326163c4d7e98ad533adcf6a9dd5729ed0f5
             
             <div style="word-spacing: .35em;"><input type="text" class="textin" style="width: 1.5em;" id="mes_i" name="mes_i" required> / <input type="text" class="textin" style="width: 2.5em;" id="ano_i" name="ano_i" requiredd> y deberá regresar el día <input type="text" class="textin" style="width: 1.5em;" id="dia_f" name="dia_f" required> / <input type="text" class="textin" style="width: 1.5em;" id="mes_f" name="mes_f" required> / <input type="text" class="textin" style="width: 2.5em;" id="ano_f" name="ano_f" required>.</div>
             <input type="number" value="<?php echo $matricula ?>" hidden name="matricula">
