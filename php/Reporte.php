@@ -40,11 +40,7 @@ $result=mysqli_query($conexion,$sql);
         <div class="main_box">
             <img src="../img/EncabezadoReporte.jpg" alt="" class="main_box_headerimg">
             <form action="insertarR.php" method="POST" id="formReporte">
-<<<<<<< HEAD
             <div class="date"> Cd. Victoria Tamaulipas<input type="text" class="indate" id="dia_e" name="dia_e" readonly>/<input type="text" class="indate" id="mes_e" name="mes_e" readonly>/<input type="text" class="indate" id="ano_e" name="ano_e" readonly style="width: 2.5em;"></div>
-=======
-            <div class="date"> Cd. Victoria Tamaulipas<input type="text" class="indate" id="dia_e" name="dia_e" readonly>/<input type="text" class="indate" id="mes_e" name="mes_e" readonly>/<input type="text" class="indate" id="ano_e" name="ano_e" readonly></div>
->>>>>>> 93c7326163c4d7e98ad533adcf6a9dd5729ed0f5
             
             <p class="bold">Reporte</p>
             

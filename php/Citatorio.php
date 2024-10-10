@@ -46,11 +46,7 @@ $result=mysqli_query($conexion,$sql);
             
             <div class="center" style="word-spacing:.79em;">Con la finalidad de tratar asuntos relacionados con la educación de su hija (o)</div>
             <form action="insertarC.php" method="post" id="formCitatorio">
-<<<<<<< HEAD
             <div class="center" style="word-spacing: .07em;"><input type="text" class="textin" style="width: 22em;" name="nombre" id="nombre" value="<?php echo $mostrar['nombre'] ?>" required readonly> quien cursa el semestre <input type="text" class="textin" style="width: 4em;" name="semestre" id="semestre" value="<?php echo $semestre ?>" required> Por medio de este </div>
-=======
-            <div class="center" style="word-spacing: .52em;"><input type="text" class="textin" style="width: 18em;" name="nombre" id="nombre" value="<?php echo $mostrar['nombre'] ?>" required readonly> quien cursa el semestre <input type="text" class="textin" style="width: 4em;" name="semestre" id="semestre" value="<?php echo $semestre ?>" required> Por medio de este </div>
->>>>>>> 93c7326163c4d7e98ad533adcf6a9dd5729ed0f5
             <div class="center" style="word-spacing:.231em;">conducto me permito girarle el presente, para que tenga usted el bien de acudir a cita con </div>
             <div style="margin: .8em 0 .8em 0em;">el departamento de orientación el día <input type="text" class="textin" style="width: 2em;" name="dia_c" id="dia_c" required>/<input type="text" class="textin" style="width: 2em;" name="mes_c" id="mes_c" required>/<input type="text" class="textin" style="width: 2em;" name="ano_c" id="ano_c" required> a las <input type="text" class="textin" style="width: 2em;" name="hora_c" id="hora_c" required>:<input type="text" class="textin" style="width: 2em;" name="min_c" id="min_c" required> hrs.</div>
             <input type="number" name="matricula" hidden value="<?php echo $matricula ?>">
