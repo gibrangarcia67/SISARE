@@ -43,7 +43,6 @@
         <div class="main_box">
             <img src="../img/EncabezadoReporte.jpg" alt="" class="main_box_headerimg">
             <form action="insertarCC.php"method="POST" id="formCartaCompromiso">
-<<<<<<< HEAD
             <div class="date"> Cd. Victoria Tamaulipas<input type="text" class="indate" id="dia_e" name="dia_e" required readonly>/<input type="text" class="indate" id="mes_e" name="mes_e" required readonly>/<input type="text" class="indate" id="ano_e" name="ano_e" required readonly style="width: 2.5em;"></div> 
             
             <p class="bold">CARTA COMPROMISO</p>
@@ -60,24 +59,6 @@
             </form>
             
             <div style="word-spacing:.65em;margin-top: .4em; margin-bottom: .4em;">
-=======
-            <div class="date"> Cd. Victoria Tamaulipas<input type="number" class="indate" id="dia_e" name="dia_e" required readonly>/<input type="number" class="indate" id="mes_e" name="mes_e" required readonly>/<input type="number" class="indate" id="ano_e" name="ano_e" required readonly></div> 
-            
-            <p class="bold">CARTA COMPROMISO</p>
-            
-            <div class="center" style="word-spacing:.18em;">El que firma la siguiente carta compromiso C.<input type="text" class="textin" style="width: 25em;" value="<?php echo $nombre ?>" id="tutor" name="tutor" required></div>
-            <div class="center">quien funge como tutor legal del alumna (a).<input type="text" class="textin" style="width: 27em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" required readonly></div>
-            <div class="center flex" style="word-spacing: 2em;">perteneciente al CBTis No. 271 grupo <div class="flex"><input type="text" class="textin" style="width: 1.5em;" value="<?php echo $semestre ?>" id="semestre" name="semestre" required> <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $grupo ?>" id="grupo" name="grupo" required></div> de la especialidad de</div>
-            <div class="center"><input type="text" class="textin" style="width: 19em;" value="<?php echo $mostrar['especialidad'] ?>" id="especialidad" name="especialidad" required readonly> se compromete a que el alumno (a) citado (a) cumpla en su</div>
-            <div class="center" style="word-spacing: .8em;">totalidad todos los artículos e indicaciones dispuestas en el reglamento general de </div>
-            <div class="center" style="word-spacing: .4em;">alumnos del CBTIS No. 271 así como las indicaciones que el personal docente y de apoyo</div>
-            <div class="center" style="word-spacing: .3em;">del plantel indiquen. De no cumplir con lo anterior, el/la alumno (a) será acreedor (a) a una </div>
-            <div style="margin-left: 1.5em; margin-bottom: 1.5em;">baja temporal, definitiva o expulsión.</div>
-            <input type="number" value="<?php echo $matricula ?>" hidden name="matricula">
-            </form>
-            
-            <div style="word-spacing:.5em;margin-left: 1.5em;margin-top: .4em; margin-bottom: .4em;">
->>>>>>> 93c7326163c4d7e98ad533adcf6a9dd5729ed0f5
                 Tengo en mi conocimiento y reconozco que el plantel me ha explicado el motivo de la
             </div>
             <div style="word-spacing:.89em;;margin-top: .4em; margin-bottom: .4em;">
