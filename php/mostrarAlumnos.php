@@ -34,10 +34,10 @@ $e=$_GET["e"];
         <main>
         <br>
         <div class="container-fluid px-4">
-                <div class="card mb-4">
+                <div class="card mb-4" style="width: 75vw;">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                <?php echo $e; ?>
+                               
+                                <b><?php echo $e; ?></b>
                             </div>
                 <div class="card-body">
                                 <table id="datatablesSimple">
