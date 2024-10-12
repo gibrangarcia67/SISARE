@@ -18,6 +18,7 @@ $result=mysqli_query($conexion,$sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reporte</title>
     <link rel="stylesheet" href="../css/Reporte.css">
+    
 </head>
 <body>
  
@@ -27,7 +28,7 @@ $result=mysqli_query($conexion,$sql);
         </a>
 
         <div class="optionsmenu">
-            <a href="" class="amenu">
+            <a href="#" class="amenu" id="printButton">
                 <img src="../icons/imprimir-contorno-del-boton.png" alt="" class="optionsmenu_img">
             </a>
             <a href="#" class="amenu" id="enviarFormulario">
@@ -36,7 +37,7 @@ $result=mysqli_query($conexion,$sql);
         </div>
     </div>
 
-    <div class="main">
+    <div class="main print-section">
         <div class="main_box">
             <img src="../img/EncabezadoReporte.jpg" alt="" class="main_box_headerimg">
             <form action="insertarR.php" method="POST" id="formReporte">
@@ -161,12 +162,12 @@ document.getElementById("enviarFormulario").addEventListener("click", function(e
             
             if(r1 == true && r2 == true && document.getElementById("semestre").value.length == 1 && document.getElementById("grupo").value.length == 1){
                 document.getElementById("formReporte").submit(); 
-            }
-
-
-
-
-             
+            }  
         });
+        
+document.getElementById('printButton').addEventListener('click', function() {
+        window.print();
+    });
 
-</script> 
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>
