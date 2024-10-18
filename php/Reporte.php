@@ -167,6 +167,13 @@ document.getElementById("enviarFormulario").addEventListener("click", function(e
         
 document.getElementById('printButton').addEventListener('click', function() {
         window.print();
+        <?php
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $output = shell_exec('python C:/xampp/htdocs/SISARE/python/script3');
+        echo $output; // Opcional: devuelve la salida del script
+}
+?>
+
     });
 
 </script>
