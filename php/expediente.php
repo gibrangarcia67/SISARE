@@ -28,6 +28,7 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
     </div>
     <div class="content">
         <div class="menu">
+        <p><a href="../">Inicio</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=PROGRAMACIÓN">Programación</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=MECATRÓNICA">Mecatronica</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=TRANSFORMACIÓN DE PLÁSTICOS">Transformación de Plásticos</a></p>

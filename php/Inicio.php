@@ -21,11 +21,13 @@
     </div>
     <div class="content">
         <div class="menu">
+            <p><a href="../">Inicio</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=PROGRAMACIÓN">Programación</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=MECATRÓNICA">Mecatronica</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=TRANSFORMACIÓN DE PLÁSTICOS">Transformación de Plásticos</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=COMPONENTE BASICO Y PROPEDEUTICO">Curso propedeutico</a></p>
-            <p><a href="../python/script.py">Actualizar datos</a></p>
+            <p><a href="../php/Ejecutar.php">Actualizar datos</a></p>
+            <p><a href="../php/MUERTE.php">Eliminar Generación</a></p>
         </div>
 
         <div class="section">

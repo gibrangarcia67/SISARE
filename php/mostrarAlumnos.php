@@ -26,10 +26,14 @@ $e=$_GET["e"];
     </div>
     <div class="content">
         <div class="menu">
+            <p><a href="../">Inicio</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=PROGRAMACIÓN">Programación</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=MECATRÓNICA">Mecatronica</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=TRANSFORMACIÓN DE PLÁSTICOS">Transformación de Plásticos</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=COMPONENTE BASICO Y PROPEDEUTICO">Curso propedeutico</a></p>
+            <p><a href="../php/Ejecutar.php">Actualizar datos</a></p>
+            <p><a href="../php/MUERTE.php">Eliminar Generación</a></p>
+            
         </div>
         <main>
         <br>
@@ -48,8 +52,7 @@ $e=$_GET["e"];
                                             <th>Nombre Completo</th>
                                             <th>Grupo</th>
                                             <th>Genero </th>
-                                            <th>Correo de Padre</th>
-                                            <th>Correo de Madre</th>
+
                                 
                                         </tr>
                                     </thead>
@@ -71,8 +74,7 @@ $e=$_GET["e"];
 						<td class="celdas_tablas"><?php echo $mostrar['nombre'] ?></td>
                         <td class="celdas_tablas"><?php echo $mostrar['grupo'] ?></td>
                         <td class="celdas_tablas"><?php echo $mostrar['genero'] ?></td>
-						<td class="celdas_tablas"><?php echo $mostrar['correo_p']?></td>
-                        <td class="celdas_tablas"><?php echo $mostrar['correo_m'] ?></td>
+
                         
 
                     </tr>
