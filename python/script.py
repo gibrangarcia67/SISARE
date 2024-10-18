@@ -85,4 +85,4 @@ conexion.close()
 print("Datos cargados exitosamente.")
 
 # Llamar al segundo script
-subprocess.run(["python", "C:/ruta/al/script2.py"])  # Asegúrate de poner la ruta correcta del script
+subprocess.run(["python", "C:/xampp/htdocs/SISARE/python/script2.py"])  # Asegúrate de poner la ruta correcta del script

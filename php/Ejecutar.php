@@ -28,8 +28,8 @@ form2.submit();
   console.log('El script se ha ejecutado.');
 }
 setTimeout(function(){
-window.location.history.go=(-1)'';
-}, 2000);
+window.location='inicio.php';
+}, 0);
            
     </script>
 
