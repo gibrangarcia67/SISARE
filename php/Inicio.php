@@ -1,3 +1,16 @@
+<?php                    
+include("conexionsql.php");
+
+$sql = "SELECT COUNT(*) AS total FROM `reportes`";
+$result=mysqli_query($conexion,$sql);
+
+if($result){
+echo "<pre>";
+echo print_r($result);
+echo "</pre>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -139,7 +152,6 @@
  File: Morris
 */
 
-
 $(function() {
   'use strict';
   if ($("#morris-bar-example").length) {
@@ -148,7 +160,7 @@ $(function() {
       barColors: ['#898989', '#8b3535'],
       data: [{
         y: '20133',
-        a: 80,
+        a: <?php echo $v ?>,
         b: 100
       },
       {
