@@ -1,6 +1,7 @@
 import pandas as pd
 import mysql.connector
 import warnings
+import subprocess  # Importar el módulo subprocess
 
 # Ignorar advertencias
 warnings.filterwarnings("ignore", category=UserWarning, module="openpyxl")
@@ -16,18 +17,18 @@ conexion = mysql.connector.connect(
 cursor = conexion.cursor()
 
 # Leer el archivo Excel
-archivo_excel = 'C:/Users/PC/OneDrive/Escritorio/Credenciales 2024-2024.xlsx'
+archivo_excel = 'C:/EXCEL/LISTAS OFICIALES.xlsx'
 xls = pd.ExcelFile(archivo_excel)
 
 # Definir las consultas SQL para insertar y actualizar
 consulta_insercion = """
-    INSERT INTO alumnos (grupo, especialidad, matricula, nombre, genero, correo_p, correo_m, cantidad_r, cantidad_s, cantidad_c)
-    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+    INSERT INTO alumnos (grupo, especialidad, matricula, generacion, nombre, genero, cantidad_r, cantidad_s, cantidad_c)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
 """
 
 consulta_actualizacion = """
     UPDATE alumnos 
-    SET grupo = %s, especialidad = %s
+    SET grupo = %s, especialidad = %s, generacion = %s
     WHERE matricula = %s
 """
 
@@ -52,30 +53,26 @@ for hoja in xls.sheet_names:
             # Eliminar espacios en medio del valor de la columna 'GRUPO'
             grupo = fila['GRUPO'].replace(" ", "")
             especialidad = fila['ESPECIALIDAD']  # Si no hay especialidad, puedes dejarlo vacío
-            matricula = fila['NO. CONTROL']
+            matricula = str(fila['NO. CONTROL']).replace(" ", "")  # Convertir a string y eliminar espacios
             nombre = fila['NOMBRE']
             genero = fila['GENERO']
 
-            # Los correos se dejarán vacíos
-            correo_p = ""  # Correo del padre
-            correo_m = ""  # Correo de la madre
-            nombre_p = ""
-            nombre_m = ""
-            
+            # Obtener los dos primeros dígitos de la matrícula como generación
+            generacion = matricula[:2]  # Tomar solo los dos primeros caracteres
+
             # Iniciar los conteos en 0
             cantidad_r = 0
             cantidad_s = 0
             cantidad_c = 0
-            cantidad_cc = 0
-
+    
             # Verificar si la matrícula ya existe en la base de datos
             cursor.execute(consulta_verificacion, (matricula,))
             resultado = cursor.fetchone()
 
             if resultado:  # Si ya existe, actualizar
-                cursor.execute(consulta_actualizacion, (grupo, especialidad, matricula))
+                cursor.execute(consulta_actualizacion, (grupo, especialidad, generacion, matricula))
             else:  # Si no existe, insertar
-                cursor.execute(consulta_insercion, (grupo, especialidad, matricula, nombre, genero, correo_p, correo_m, cantidad_r, cantidad_s, cantidad_c))
+                cursor.execute(consulta_insercion, (grupo, especialidad, matricula, generacion, nombre, genero, cantidad_r, cantidad_s, cantidad_c))
         
         except Exception as e:
             print(f"Error al procesar la fila {index} en la hoja {hoja}: {e}")
@@ -86,3 +83,6 @@ cursor.close()
 conexion.close()
 
 print("Datos cargados exitosamente.")
+
+# Llamar al segundo script
+subprocess.run(["python", "C:/xampp/htdocs/SISARE/python/script2.py"])  # Asegúrate de poner la ruta correcta del script

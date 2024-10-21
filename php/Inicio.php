@@ -1,3 +1,49 @@
+<?php                    
+include("conexionsql.php");
+
+// $sql = "SELECT COUNT(*) AS total FROM `reportes`";
+$sql_P_M = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'M' AND especialidad = 'PROGRAMACIÓN'";
+$sql_P_H = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'H' AND especialidad = 'PROGRAMACIÓN'";
+$result_P_M=mysqli_query($conexion,$sql_P_M);
+$result_P_H=mysqli_query($conexion,$sql_P_H);
+$row_P_M = $result_P_M -> fetch_assoc();
+$row_P_H = $result_P_H -> fetch_assoc();
+
+$sql_M_M = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'M' AND especialidad = 'MECATRÓNICA'";
+$sql_M_H = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'H' AND especialidad = 'MECATRÓNICA'";
+$result_M_M=mysqli_query($conexion,$sql_M_M);
+$result_M_H=mysqli_query($conexion,$sql_M_H);
+$row_M_M = $result_M_M -> fetch_assoc();
+$row_M_H = $result_M_H -> fetch_assoc();
+
+
+$sql_T_M = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'M' AND especialidad = 'TRANSFORMACIÓN DE PLÁSTICOS'";
+$sql_T_H = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'H' AND especialidad = 'TRANSFORMACIÓN DE PLÁSTICOS'";
+$result_T_M=mysqli_query($conexion,$sql_T_M);
+$result_T_H=mysqli_query($conexion,$sql_T_H);
+$row_T_M = $result_T_M -> fetch_assoc();
+$row_T_H = $result_T_H -> fetch_assoc();
+
+$sql_C_M = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'M' AND especialidad = 'COMPONENTE BASICO Y PROPEDEUTICO'";
+$sql_C_H = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'H' AND especialidad = 'COMPONENTE BASICO Y PROPEDEUTICO'";
+$result_C_M=mysqli_query($conexion,$sql_C_M);
+$result_C_H=mysqli_query($conexion,$sql_C_H);
+$row_C_M = $result_C_M -> fetch_assoc();
+$row_C_H = $result_C_H -> fetch_assoc();
+
+
+
+// echo $row['Total'];
+
+// if($result){
+//   echo "<pre>";
+//   echo print_r($result);
+//   echo "</pre>";
+// }
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,102 +61,36 @@
 </head>
 <body>
     <div class="header">
-        <img src="../icons/menu.png" alt="">
+        <!-- <img src="../icons/menu.png" alt=""> -->
         <p>Sistema de Seguimiento y Registro Administrativo Escolar</p>
-        <img src="../icons/campana.png" alt="">
+        <!-- <img src="../icons/campana.png" alt=""> -->
     </div>
     <div class="content">
         <div class="menu">
+            <p><a href="../">Inicio</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=PROGRAMACIÓN">Programación</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=MECATRÓNICA">Mecatronica</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=TRANSFORMACIÓN DE PLÁSTICOS">Transformación de Plásticos</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=COMPONENTE BASICO Y PROPEDEUTICO">Curso propedeutico</a></p>
+            <p><a href="../php/Ejecutar.php">Actualizar datos</a></p>
+            <p><a href="../php/MUERTE.php">Eliminar Generación</a></p>
         </div>
 
         <div class="section">
             <div class="box">
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-body">
+                <div class="col-xl-12" style="height: 80vh;">
+                    <div class="card" style="height: 80vh;">
+                        <div class="card-body" style="height: 80vh;">
             
                             <h4 class="card-title">Estadísticas de incidencias Programación (MUJERES)</h4>
                             <p class="card-subtitle mb-4">Example of morris bar chart.</p>
     
-                            <div id="morris-bar-example" class="morris-chart"></div>
+                            <div id="morris-bar-example" class="morris-chart" style="height: 60vh;"></div>
             
                         </div> <!-- end card-body-->
                     </div> <!-- end card-->
                 </div> <!-- end col -->
-                <!-- end row-->
-                    <div class="col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-                
-                                <h4 class="card-title">Estadísticas de incidencias Programación (HOMBRES)</h4>
-                                <p class="card-subtitle mb-4">Example of morris bar chart.</p>
-        
-                                <div id="morris-bar-example2" class="morris-chart"></div>
-                
-                            </div> <!-- end card-body-->
-                        </div> <!-- end card-->
-                    </div> <!-- end col -->
-                </div>
-            <div class="box">
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-body">
-            
-                            <h4 class="card-title">Estadísticas de incidencias Mecatrónica (MUJERES)</h4>
-                            <p class="card-subtitle mb-4">Example of morris bar chart.</p>
-    
-                            <div id="morris-bar-example3" class="morris-chart"></div>
-            
-                        </div> <!-- end card-body-->
-                    </div> <!-- end card-->
-                </div> <!-- end col -->
-                <!-- end row-->
-                    <div class="col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-                
-                                <h4 class="card-title">Estadísticas de incidencias Mecatrónica (HOMBRES)</h4>
-                                <p class="card-subtitle mb-4">Example of morris bar chart.</p>
-        
-                                <div id="morris-bar-example4" class="morris-chart"></div>
-                
-                            </div> <!-- end card-body-->
-                        </div> <!-- end card-->
-                    </div> <!-- end col -->
-                </div>
-                <!-- end row-->
-            <div class="box">
-                <div class="col-xl-6">
-                    <div class="card">
-                        <div class="card-body">
-            
-                            <h4 class="card-title">Estadísticas de incidencias Transformación de Plásticos(MUJERES)</h4>
-                            <p class="card-subtitle mb-4">Example of morris bar chart.</p>
-    
-                            <div id="morris-bar-example5" class="morris-chart"></div>
-            
-                        </div> <!-- end card-body-->
-                    </div> <!-- end card-->
-                </div> <!-- end col -->
-                <!-- end row-->
-                    <div class="col-xl-6">
-                        <div class="card">
-                            <div class="card-body">
-                
-                                <h4 class="card-title">Estadísticas de incidencias Transformación de Plásticos(HOMBRES)</h4>
-                                <p class="card-subtitle mb-4">Example of morris bar chart.</p>
-        
-                                <div id="morris-bar-example6" class="morris-chart"></div>
-                
-                            </div> <!-- end card-body-->
-                        </div> <!-- end card-->
-                    </div> <!-- end col -->
-                </div>
-                <!-- end row-->
+              </div>
         </div>
     </div>
 </div>
@@ -136,297 +116,42 @@
  File: Morris
 */
 
-
 $(function() {
   'use strict';
   if ($("#morris-bar-example").length) {
     Morris.Bar({
       element: 'morris-bar-example',
-      barColors: ['#898989', '#8b3535'],
+      barColors: ['#8b3535','#0066FF'],
       data: [{
-        y: '20133',
-        a: 80,
-        b: 100
+        y: 'PROGRAMACIÓN',
+        a: <?php echo $row_P_M['Total']; ?>,
+        b: <?php echo $row_P_H['Total']; ?>,
       },
       {
-        y: '2014',
-        a: 110,
-        b: 130
+        y: 'MECATRÓNICA',
+        a: <?php echo $row_M_M['Total']; ?>,
+        b: <?php echo $row_M_H['Total']; ?>,
       },
       {
-        y: '2015',
-        a: 90,
-        b: 110
+        y: 'TRANSFORMA...',
+        a: <?php echo $row_T_M['Total']; ?>,
+        b: <?php echo $row_T_H['Total']; ?>,
       },
       {
-        y: '2016',
-        a: 120,
-        b: 140
-      },
-      {
-        y: '2017',
-        a: 110,
-        b: 125
-      },
-      {
-        y: '2018',
-        a: 170,
-        b: 190
-      },
-      {
-        y: '2019',
-        a: 120,
-        b: 140
+        y: 'COMPONENTE BASICO Y PROPEDEUTICO',
+        a: <?php echo $row_C_M['Total']; ?>,
+        b: <?php echo $row_C_H['Total']; ?>,
       }
     ],
       xkey: 'y',
-      ykeys: ['a', 'b'],
+      ykeys: ['a','b'],
       hideHover: 'auto',
       gridLineColor: '#eef0f2',
       resize: true,
       barSizeRatio: 0.4,
-      labels: ['Series A', 'Series B']
+      labels: ['MUJERES','HOMBRES']
     });
-  if ($("#morris-bar-example2").length) {
-    Morris.Bar({
-      element: 'morris-bar-example2',
-      barColors: ['#898989', '#8b3535'],
-      data: [{
-        y: '20133',
-        a: 80,
-        b: 100
-      },
-      {
-        y: '2014',
-        a: 110,
-        b: 130
-      },
-      {
-        y: '2015',
-        a: 90,
-        b: 110
-      },
-      {
-        y: '2016',
-        a: 120,
-        b: 140
-      },
-      {
-        y: '2017',
-        a: 110,
-        b: 125
-      },
-      {
-        y: '2018',
-        a: 170,
-        b: 190
-      },
-      {
-        y: '2019',
-        a: 120,
-        b: 140
-      }
-    ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      hideHover: 'auto',
-      gridLineColor: '#eef0f2',
-      resize: true,
-      barSizeRatio: 0.4,
-      labels: ['Series A', 'Series B']
-    });
-  if ($("#morris-bar-example3").length) {
-    Morris.Bar({
-      element: 'morris-bar-example3',
-      barColors: ['#898989', '#8b3535'],
-      data: [{
-        y: '20133',
-        a: 80,
-        b: 100
-      },
-      {
-        y: '2014',
-        a: 110,
-        b: 130
-      },
-      {
-        y: '2015',
-        a: 90,
-        b: 110
-      },
-      {
-        y: '2016',
-        a: 120,
-        b: 140
-      },
-      {
-        y: '2017',
-        a: 110,
-        b: 125
-      },
-      {
-        y: '2018',
-        a: 170,
-        b: 190
-      },
-      {
-        y: '2019',
-        a: 120,
-        b: 140
-      }
-    ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      hideHover: 'auto',
-      gridLineColor: '#eef0f2',
-      resize: true,
-      barSizeRatio: 0.4,
-      labels: ['Series A', 'Series B']
-    });
-  if ($("#morris-bar-example4").length) {
-    Morris.Bar({
-      element: 'morris-bar-example4',
-      barColors: ['#898989', '#8b3535'],
-      data: [{
-        y: '20133',
-        a: 80,
-        b: 100
-      },
-      {
-        y: '2014',
-        a: 110,
-        b: 130
-      },
-      {
-        y: '2015',
-        a: 90,
-        b: 110
-      },
-      {
-        y: '2016',
-        a: 120,
-        b: 140
-      },
-      {
-        y: '2017',
-        a: 110,
-        b: 125
-      },
-      {
-        y: '2018',
-        a: 170,
-        b: 190
-      },
-      {
-        y: '2019',
-        a: 120,
-        b: 140
-      }
-    ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      hideHover: 'auto',
-      gridLineColor: '#eef0f2',
-      resize: true,
-      barSizeRatio: 0.4,
-      labels: ['Series A', 'Series B']
-    });
-  if ($("#morris-bar-example5").length) {
-    Morris.Bar({
-      element: 'morris-bar-example5',
-      barColors: ['#898989', '#8b3535'],
-      data: [{
-        y: '20133',
-        a: 80,
-        b: 100
-      },
-      {
-        y: '2014',
-        a: 110,
-        b: 130
-      },
-      {
-        y: '2015',
-        a: 90,
-        b: 110
-      },
-      {
-        y: '2016',
-        a: 120,
-        b: 140
-      },
-      {
-        y: '2017',
-        a: 110,
-        b: 125
-      },
-      {
-        y: '2018',
-        a: 170,
-        b: 190
-      },
-      {
-        y: '2019',
-        a: 120,
-        b: 140
-      }
-    ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      hideHover: 'auto',
-      gridLineColor: '#eef0f2',
-      resize: true,
-      barSizeRatio: 0.4,
-      labels: ['Series A', 'Series B']
-    });
-  if ($("#morris-bar-example6").length) {
-    Morris.Bar({
-      element: 'morris-bar-example6',
-      barColors: ['#898989', '#8b3535'],
-      data: [{
-        y: '20133',
-        a: 80,
-        b: 100
-      },
-      {
-        y: '2014',
-        a: 110,
-        b: 130
-      },
-      {
-        y: '2015',
-        a: 90,
-        b: 110
-      },
-      {
-        y: '2016',
-        a: 120,
-        b: 140
-      },
-      {
-        y: '2017',
-        a: 110,
-        b: 125
-      },
-      {
-        y: '2018',
-        a: 170,
-        b: 190
-      },
-      {
-        y: '2019',
-        a: 120,
-        b: 140
-      }
-    ],
-      xkey: 'y',
-      ykeys: ['a', 'b'],
-      hideHover: 'auto',
-      gridLineColor: '#eef0f2',
-      resize: true,
-      barSizeRatio: 0.4,
-      labels: ['Series A', 'Series B']
-    });
+  
     function update() {
         nReloads++;
         graph.setData(data(5 * nReloads));
@@ -435,11 +160,9 @@ $(function() {
     setInterval(update, 100);
   }
 }
-}
-}
-}
-}
-});
+
+);
+
 
     </script>
 

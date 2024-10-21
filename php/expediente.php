@@ -22,12 +22,13 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
 </head>
 <body>
     <div class="header">
-        <img src="../icons/menu.png" alt="">
+        <!-- <img src="../icons/menu.png" alt=""> -->
         <p><b><?php echo $mostrar['nombre']; ?></b></p>
-        <img src="../icons/campana.png" alt="">
+        <!-- <img src="../icons/campana.png" alt=""> -->
     </div>
     <div class="content">
         <div class="menu">
+        <p><a href="../">Inicio</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=PROGRAMACIÓN">Programación</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=MECATRÓNICA">Mecatronica</a></p>
             <p><a href="../php/mostrarAlumnos.php?e=TRANSFORMACIÓN DE PLÁSTICOS">Transformación de Plásticos</a></p>
@@ -66,13 +67,14 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
-                                    <td> <a href="Reporte.php"><?php echo $row['id'];?></a></td>
+                                    <td> <?php echo $row['id'];?></td>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e'];?></td>
                                     <td><?php echo $row['motivo'] ?></td>
-                                    <td> <a href="eliminarR.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
+                                    <td> <a class="eliminar" href="eliminarR.php?id=<?php echo $row['id']; ?>&matricula=<?php echo $matricula; ?>" ><center><img src="../icons/borrar.png" width="40px"></center></a></td>
                                 
                                 </tr>
                             <?php
+                            $id_reporte=$row['id'];
                             }
                             ?>
                         </tbody>
@@ -109,12 +111,13 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
-                                    <td> <a href="Reporte.php"><?php echo $row['id'];?></a></td>
+                                    <td> <?php echo $row['id'];?></td>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['ano_e'] ?></td>
                                     <td><?php echo $row['dia_c'] . "/" . $row['mes_c']. "/". $row['ano_c'] ?></td>
-                                    <td> <a href="eliminarC.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
+                                    <td> <a class="eliminar" href="eliminarC.php?id=<?php echo $row['id']; ?>&matricula=<?php echo $matricula; ?>" ><center><img src="../icons/borrar.png" width="40px"></center></a></td>
                                 </tr>
                             <?php
+                            $id_citatorio=$row['id'];
                             }
                             ?>
                         </tbody>
@@ -153,16 +156,16 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
-                                <td> <a href="Reporte.php"><?php echo $row['id'];?></a></td>
+                                <td> <?php echo $row['id'];?></td>
                                 <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e'] ?></td>
                                     <td><?php echo $row['especialidad'] ?></td>
                                     <td><?php echo $row['grupo'] ?></td>
                                     <td><?php echo $row['dia_i'] . "/" . $row['mes_i']. "/". $row['mes_i'] ?></td>
                                     <td><?php echo $row['dia_f'] . "/" . $row['mes_f']. "/". $row['mes_f'] ?></td>
-                                    <td><a href="eliminarS.php?id=<?php echo $row['id'] ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
-
+                                    <td> <a class="eliminar" href="eliminarS.php?id=<?php echo $row['id']; ?>&matricula=<?php echo $matricula; ?>" ><center><img src="../icons/borrar.png" width="40px"></center></a></td>
                                 </tr>
                             <?php
+                            $id_suspension=$row['id'];
                             }
                             ?>
                         </tbody>
@@ -187,7 +190,6 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                                 <th>Fecha</th>
                                 <th>Tutor</th>  
                                 <th>Eliminar</th>                             
-
                             </tr>
                         </thead>
                         <tbody>
@@ -198,12 +200,13 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                             while ($row = mysqli_fetch_array($result)) {
                             ?>
                                 <tr>
-                                    <td> <a href="Reporte.php"><?php echo $row['id'];?></a></td>
+                                    <td> <?php echo $row['Id_carta'];?></td>
                                     <td><?php echo $row['dia_e'] . "/" . $row['mes_e']. "/". $row['mes_e']; ?></td>
                                     <td><?php echo $row['tutor']; ?></td>
-                                    <td> <a href="eliminarCC.php?id=<?php echo $row['Id_carta']; ?>&matricula=<?php echo $matricula; ?>"><center><img src="../icons/borrar.png" width="40px"></center></a></td>
+                                    <td> <a class="eliminar" href="eliminarCC.php?id=<?php echo $row['Id_carta']; ?>&matricula=<?php echo $matricula; ?>" ><center><img src="../icons/borrar.png" width="40px"></center></a></td>
                                 </tr    
                             <?php
+                            $id_carta=$row['Id_carta'];
                             }
                             ?>
                         </tbody>
@@ -219,8 +222,8 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
         }
     ?>
     <br><br>
-        <div class="container-fluid px-4">
-            <div class="card mb-4" style="width: 75vw;">
+    <div class="container-fluid px-4">
+            <div class="card mb-4">
                 <div class="card-header">
                     
                     <?php
@@ -232,13 +235,21 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
                     <b><?php echo $mostrar['matricula'], "- ", $mostrar['nombre']; ?></b>
                 </div>
                 <div class="card-body">
-                    <table border="2">
-                            <th>
-                                <td class="celdas_tablas"><a href="Reporte.php?matricula=<?php echo $matricula; ?>"><center>Crear Reporte</center></a></td>
-                                <td class="celdas_tablas"><a href="Citatorio.php?matricula=<?php echo $matricula; ?>">Crear Citatorio</center></a></td>
-                                <td class="celdas_tablas"><a href="Suspension.php?matricula=<?php echo $matricula; ?>"><center>Crear Suspension</center></a></td>
-                                <td class="celdas_tablas"><a href="Carta_compromiso.php?matricula=<?php echo $matricula; ?>"><center>Carta Compromiso</center></a></td>                            
-                            </th>
+                    <table id="datatablesSimple" class="table table-bordered">
+                        <thead> 
+                            <tr>
+                                <th><center>Reporte </center></th>
+                                <th><center>Citatorio </center></th>
+                                <th><center>Suspension </center></th>
+                                <th><center>Carta Compromiso </center></th>
+                            </tr>
+                        </thead>
+                            <tr>
+                                <td class="celdas_tablas"><a href="Reporte.php?matricula=<?php echo $matricula; ?>"><center><img src="../img/agregar.png" width="40px"></center></a></td>
+                                <td class="celdas_tablas"><a href="Citatorio.php?matricula=<?php echo $matricula; ?>"><center><img src="../img/agregar.png" width="40px"></center></a></td>
+                                <td class="celdas_tablas"><a href="Suspension.php?matricula=<?php echo $matricula; ?>"><center><img src="../img/agregar.png" width="40px"></center></a></td>
+                                <td class="celdas_tablas"><a href="Carta_compromiso.php?matricula=<?php echo $matricula; ?>"><center><img src="../img/agregar.png" width="40px"></center></a></td>                            
+                            </tr>
                             <?php
                             }
                             ?>
@@ -254,6 +265,27 @@ $result=mysqli_query($conexion,$sql); $mostrar= mysqli_fetch_array($result);
 
 
     <!-- jQuery  -->
+    <script type="text/javascript"> 
+    const enlacesEliminar = document.querySelectorAll('.eliminar');
+
+// Añade el mismo evento de confirmación a todos los enlaces seleccionados
+enlacesEliminar.forEach(enlace => {
+  enlace.addEventListener('click', function(event) {
+    // Evita la acción predeterminada del enlace
+    event.preventDefault();
+    
+    // Mostrar la alerta de confirmación
+    const confirmacion = confirm("¿Estás seguro de que deseas eliminar este elemento?");
+
+    if (confirmacion) {  
+      // Si el usuario confirma, redirige a la URL del enlace
+      window.location.href = this.href;
+    } else {
+      alert("Acción cancelada.");
+    }
+  });
+});
+    </script>
     <script src="../layouts/assets/js/jquery.min.js"></script>
     <script src="../layouts/assets/js/bootstrap.bundle.min.js"></script>
     <script src="../layouts/assets/js/theme.js"></script>
