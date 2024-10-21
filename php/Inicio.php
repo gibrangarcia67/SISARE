@@ -1,6 +1,7 @@
 <?php                    
 include("conexionsql.php");
 
+<<<<<<< HEAD
 // $sql = "SELECT COUNT(*) AS total FROM `reportes`";
 $sql_P_M = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'M' AND especialidad = 'PROGRAMACIÓN'";
 $sql_P_H = "SELECT SUM(cantidad_r) AS Total FROM `alumnos` WHERE genero = 'H' AND especialidad = 'PROGRAMACIÓN'";
@@ -42,6 +43,16 @@ $row_C_H = $result_C_H -> fetch_assoc();
 // }
 
 
+=======
+$sql = "SELECT COUNT(*) AS total FROM `reportes`";
+$result=mysqli_query($conexion,$sql);
+
+if($result){
+echo "<pre>";
+echo print_r($result);
+echo "</pre>";
+}
+>>>>>>> 675f500e31ae0bef66dfa4a6126633e9ec7aa2dc
 ?>
 
 <!DOCTYPE html>
@@ -123,9 +134,15 @@ $(function() {
       element: 'morris-bar-example',
       barColors: ['#8b3535','#0066FF'],
       data: [{
+<<<<<<< HEAD
         y: 'PROGRAMACIÓN',
         a: <?php echo $row_P_M['Total']; ?>,
         b: <?php echo $row_P_H['Total']; ?>,
+=======
+        y: '20133',
+        a: <?php echo $v ?>,
+        b: 100
+>>>>>>> 675f500e31ae0bef66dfa4a6126633e9ec7aa2dc
       },
       {
         y: 'MECATRÓNICA',
@@ -162,6 +179,7 @@ $(function() {
 }
 
 );
+
 
 
     </script>
