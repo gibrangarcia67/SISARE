@@ -25,7 +25,7 @@
         </a>
 
         <div class="optionsmenu">
-            <a href="" class="amenu">
+            <a href="#" class="amenu" id="printButton">
                 <img src="../icons/imprimir-contorno-del-boton.png" alt="" class="optionsmenu_img">
             </a>
             <a href="#" class="amenu" id="enviarFormulario">
@@ -47,7 +47,7 @@
             
             <p class="bold-2" style="margin: 2em 0;">CCT: 28DCT0271F</p>
             
-            <div class="center" style="word-spacing: .56em;">Padre o madre de familia y/o tutor del alumna(o) <input type="text" class="textin" style="width: 22em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" required readonly></div>
+            <div class="center" style="word-spacing: .32em;">Padre o madre de familia y/o tutor del alumna(o) <input type="text" class="textin" style="width: 25em;" value="<?php echo $mostrar['nombre'] ?>" id="nombre" name="nombre" required readonly></div>
             
             <div class="center" style="word-spacing: .04em;">del grupo <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $semestre ?>" id="semestre" name="semestre" required> <input type="text" class="textin" style="width: 1.5em;" value="<?php echo $grupo ?>" id="grupo" name="grupo" required> de la especialidad de <input type="text" class="textin" style="width: 22em;" value="<?php echo $mostrar['especialidad'] ?>" id="especialidad" name="especialidad" required readonly>, por acumulación de</div>
             
@@ -160,4 +160,60 @@ document.getElementById("enviarFormulario").addEventListener("click", function(e
         document.getElementById("formSuspension").submit(); 
     }
 });
+document.getElementById('printButton').addEventListener('click', function() {
+    var sem = document.getElementById("semestre").value;
+    var grupo = document.getElementById("grupo").value;
+    
+    var dia_i = document.getElementById("dia_i").value;
+    var mes_i = document.getElementById("mes_i").value;
+    var ano_i = document.getElementById("ano_i").value;
+
+    var dia_f = document.getElementById("dia_f").value;
+    var mes_f = document.getElementById("mes_f").value;
+    var ano_f = document.getElementById("ano_f").value;
+
+    var grupos = /^[A-H]+$/i;
+    var semestres = /^[1-6]+$/;
+    var r1 = grupos.test(grupo);
+    var r2 = semestres.test(sem);
+
+    // Validación de fecha de inicio no mayor a fecha de fin y que el año sea a partir de 2024
+    var fechaInicio = new Date(ano_i, mes_i - 1, dia_i);
+    var fechaFin = new Date(ano_f, mes_f - 1, dia_f);
+
+    if(fechaInicio > fechaFin){
+        alert("La fecha de inicio no puede ser mayor que la fecha de fin.");
+        return;
+    }
+
+    if(ano_i < 2024 || ano_f < 2024){
+        alert("El año no puede ser menor a 2024.");
+        return;
+    }
+
+    // Validación de semestre
+    if(document.getElementById("semestre").value == ""){
+        alert("Ingresa el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+        document.getElementById("semestre").value="<?php echo $semestre; ?>";
+    } else if(r2 != true || document.getElementById("semestre").value.length != 1){
+        alert("Ingresa correctamente el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+        document.getElementById("semestre").value="<?php echo $semestre; ?>";
+    }
+
+    // Validación de grupo
+    if(document.getElementById("grupo").value == ""){
+        alert("Ingresa el grupo <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
+        document.getElementById("grupo").value="<?php echo $grupo; ?>";
+    } else if(r1 != true || document.getElementById("grupo").value.length != 1){
+        alert("Ingresa correctamente el grupo <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
+        document.getElementById("grupo").value="<?php echo $grupo; ?>";
+    }
+
+    // Si todas las validaciones son correctas, envía el formulario
+    if(r1 == true && r2 == true && document.getElementById("semestre").value.length == 1 && document.getElementById("grupo").value.length == 1){
+        window.print();
+    }    
+    
+      
+    });
 </script>

@@ -127,54 +127,49 @@ document.getElementById("mes_e").value = mes;
 document.getElementById("ano_e").value = ano;
 
 
-document.getElementById("enviarFormulario").addEventListener("click", function(event) {
-            event.preventDefault();
+// Función para validar campos
+function validarFormulario() {
+    var sem = document.getElementById("semestre").value;
+    var grupo = document.getElementById("grupo").value;
+    var grupos = /^[A-H]+$/i;
+    var semestres = /^[1-6]+$/;
+    var r1 = grupos.test(grupo);
+    var r2 = semestres.test(sem);
 
-            var sem = document.getElementById("semestre").value;  //copiar
-            var grupo = document.getElementById("grupo").value;
-            
-            var grupos = /^[A-H]+$/i;
-            var semestres = /^[1-6]+$/; //para fechas, usar uno para dias 1-31, mes 1-12 , año 1-9 
+    if (sem == "") {
+        alert("Ingresa el semestre <?php if($genero == 'H'){ echo 'del alumno'; } else { echo 'de la alumna'; } ?>");
+        return false;
+    } else if (!r2) {
+        alert("Ingresa correctamente el semestre (entre 1 y 6)");
+        return false;
+    }
 
-            var r1 = grupos.test(grupo);  //copiar
-            var r2 = semestres.test(sem);
+    if (grupo == "") {
+        alert("Ingresa el grupo <?php if($genero == 'H'){ echo 'del alumno'; } else { echo 'de la alumna'; } ?>");
+        return false;
+    } else if (!r1) {
+        alert("Ingresa correctamente el grupo (entre A y H)");
+        return false;
+    }
 
-            
-            if(document.getElementById("semestre").value == ""){
-                alert("Ingresa el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
-                document.getElementById("semestre").value="<?php echo $semestre; ?>";
-            }else if(r2 != true|| document.getElementById("semestre").value.length != 1){
-                alert("Ingresa correctamente el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
-                document.getElementById("semestre").value="<?php echo $semestre; ?>";
-            }
-
-
-            if(document.getElementById("grupo").value == ""){
-                alert("Ingresa el grupo <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
-                document.getElementById("grupo").value="<?php echo $grupo; ?>";
-            }else if(r1 != true || document.getElementById("grupo").value.length != 1){
-                alert("Ingresa correctamente el grupo <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
-                document.getElementById("grupo").value="<?php echo $grupo; ?>";
-            }
-
-
-            //Enviar form   TAMBIEN AGREGAR
-            
-            if(r1 == true && r2 == true && document.getElementById("semestre").value.length == 1 && document.getElementById("grupo").value.length == 1){
-                document.getElementById("formReporte").submit(); 
-            }  
-        });
-        
-document.getElementById('printButton').addEventListener('click', function() {
-        window.print();
-        <?php
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $output = shell_exec('python C:/xampp/htdocs/SISARE/python/script3');
-        echo $output; // Opcional: devuelve la salida del script
+    return true;
 }
-?>
 
-    });
+// Validación en el botón de enviar formulario
+document.getElementById("enviarFormulario").addEventListener("click", function(event) {
+    event.preventDefault();
+    if (validarFormulario()) {
+        document.getElementById("formReporte").submit();
+    }
+});
+
+// Validación en el botón de imprimir
+document.getElementById("printButton").addEventListener("click", function(event) {
+    event.preventDefault(); // Evita la acción predeterminada
+    if (validarFormulario()) {
+            window.print();
+    }
+});
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>

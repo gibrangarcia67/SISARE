@@ -31,7 +31,7 @@
         </a>
 
         <div class="optionsmenu">
-            <a href="" class="amenu">
+            <a href="" class="amenu" id="printButton">
                 <img src="../icons/imprimir-contorno-del-boton.png" alt="" class="optionsmenu_img">
             </a>
             <a href="#" class="amenu" id="enviarFormulario">
@@ -157,5 +157,45 @@ function regresar(){
     window.history.go("-1");
 }
 
+document.getElementById('printButton').addEventListener('click', function() {
+        
+        var sem = document.getElementById("semestre").value;  //copiar
+            var grupo = document.getElementById("grupo").value;
+            
+            var grupos = /^[A-H]+$/i;
 
+            var semestres = /^[1-6]+$/; 
+
+
+
+            var r1 = grupos.test(grupo);  //copiar
+            var r2 = semestres.test(sem);
+
+            
+            if(document.getElementById("semestre").value == ""){
+                alert("Ingresa el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+            }else if(r2 != true|| document.getElementById("semestre").value.length != 1){
+                alert("Ingresa correctamente el semestre <?php if($genero == "H"){ echo "del alumno"; }else{ echo "de la alumna"; } ?>");
+                document.getElementById("semestre").value="<?php echo $semestre; ?>";
+            }
+
+
+            if(document.getElementById("grupo").value == ""){
+                alert("Ingresa el grupo <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
+                document.getElementById("grupo").value="<?php echo $grupo; ?>";
+            }else if(r1 != true || document.getElementById("grupo").value.length != 1){
+                alert("Ingresa correctamente el grupo <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
+                document.getElementById("grupo").value="<?php echo $grupo; ?>";
+            }
+
+
+            //Enviar form   TAMBIEN AGREGAR
+            
+            if(r1 == true && r2 == true && document.getElementById("semestre").value.length == 1 && document.getElementById("grupo").value.length == 1){
+                window.print();
+            }
+
+      
+    });
 </script> 

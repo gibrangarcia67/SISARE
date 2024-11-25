@@ -25,7 +25,7 @@ while ($mostrar = mysqli_fetch_array($result)) {
         </a>
 
         <div class="optionsmenu">
-            <a href="" class="amenu">
+            <a href="#" class="amenu" id="printButton">
                 <img src="../icons/imprimir-contorno-del-boton.png" alt="" class="optionsmenu_img">
             </a>
             <a href="#" class="amenu" id="enviarFormulario">
@@ -46,16 +46,16 @@ while ($mostrar = mysqli_fetch_array($result)) {
             
             <div class="center" style="word-spacing:.79em;">Con la finalidad de tratar asuntos relacionados con la educación de su hija (o)</div>
             <form action="insertarC.php" method="post" id="formCitatorio">
-                <div class="center" style="word-spacing: .07em;">
-                    <input type="text" class="textin" style="width: 22em;" name="nombre" id="nombre" value="<?php echo $mostrar['nombre'] ?>" required readonly> 
+                <div class="center" style="word-spacing: .21em;">
+                    <input type="text" class="textin" style="width: 25em;" name="nombre" id="nombre" value="<?php echo $mostrar['nombre'] ?>" required readonly> 
                     quien cursa el semestre 
-                    <input type="text" class="textin" style="width: 4em;" name="semestre" id="semestre" value="<?php echo $semestre ?>" required> Por medio de este 
+                    <input type="text" class="textin" style="width: 4em;" name="semestre" id="semestre" value="<?php echo $semestre ?>" required> Por medio
                 </div>
-                <div class="center" style="word-spacing:.231em;">
-                    conducto me permito girarle el presente, para que tenga usted el bien de acudir a cita con 
+                <div class="center" style="word-spacing:.10em;">
+                de este conducto me permito girarle el presente, para que tenga usted el bien de acudir a cita
                 </div>
                 <div style="margin: .8em 0 .8em 0em;">
-                    el departamento de orientación el día 
+                con el departamento de orientación el día 
                     <input type="text" class="textin" style="width: 2em;" name="dia_c" id="dia_c" required>/
                     <input type="text" class="textin" style="width: 2em;" name="mes_c" id="mes_c" required>/
                     <input type="text" class="textin" style="width: 2.5em;" name="ano_c" id="ano_c" required> 
@@ -150,4 +150,41 @@ document.getElementById("enviarFormulario").addEventListener("click", function(e
         document.getElementById("formCitatorio").submit(); 
     }
 });
+document.getElementById('printButton').addEventListener('click', function() {
+        
+        var dia_c = document.getElementById("dia_c").value;
+    var mes_c = document.getElementById("mes_c").value;
+    var ano_c = document.getElementById("ano_c").value;
+
+    // Validar fecha ingresada
+    if (!dia_c || !mes_c || !ano_c) {
+        alert("Por favor, ingresa una fecha completa.");
+        return;
+    }
+
+    var fechaIngresada = new Date(ano_c, mes_c - 1, dia_c);
+
+    if (fechaIngresada.getFullYear() != ano_c || (fechaIngresada.getMonth() + 1) != mes_c || fechaIngresada.getDate() != dia_c) {
+        alert("La fecha ingresada no es válida.");
+        return;
+    }
+
+    // Validar semestre
+    var sem = document.getElementById("semestre").value;
+    var semestres = /^[1-6]+$/;
+    var r2 = semestres.test(sem);
+
+    if (document.getElementById("semestre").value == "") {
+        alert("Ingresa el semestre <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
+        document.getElementById("semestre").value = "<?php echo $semestre; ?>";
+    } else if (r2 != true) {
+        alert("Ingresa correctamente el semestre <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
+        document.getElementById("semestre").value = "<?php echo $semestre; ?>";
+    }
+
+    // Enviar formulario si todo es válido
+    if (r2 == true) {
+        window.print();
+    }
+    });
 </script>

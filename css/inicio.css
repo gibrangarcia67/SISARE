@@ -12,6 +12,12 @@ body{
     height: 100vh;
     overflow: hidden;
 }
+.main{
+    width: 80vw;
+    height: 75vh;
+
+    overflow: auto;
+}
 .header{
     position: relative;
     z-index: 1000;
