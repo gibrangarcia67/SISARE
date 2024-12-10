@@ -128,6 +128,7 @@ document.getElementById("ano_e").value = ano;
 
 
 // Función para validar campos
+// Función para validar campos
 function validarFormulario() {
     var sem = document.getElementById("semestre").value;
     var grupo = document.getElementById("grupo").value;
@@ -152,6 +153,21 @@ function validarFormulario() {
         return false;
     }
 
+    // Validar que al menos un motivo esté seleccionado
+    var motivos = document.getElementsByName("motivo");
+    var motivoSeleccionado = false;
+    for (var i = 0; i < motivos.length; i++) {
+        if (motivos[i].checked) {
+            motivoSeleccionado = true;
+            break;
+        }
+    }
+
+    if (!motivoSeleccionado) {
+        alert("Por favor, selecciona al menos un motivo.");
+        return false;
+    }
+
     return true;
 }
 
@@ -167,9 +183,10 @@ document.getElementById("enviarFormulario").addEventListener("click", function(e
 document.getElementById("printButton").addEventListener("click", function(event) {
     event.preventDefault(); // Evita la acción predeterminada
     if (validarFormulario()) {
-            window.print();
+        window.print();
     }
 });
+
 
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/printThis/1.15.0/printThis.min.js"></script>

@@ -99,9 +99,8 @@ while ($mostrar = mysqli_fetch_array($result)) {
 ?>
 
 <script type="text/javascript">
-var fechaActual = new Date();
-
 // Obtener la fecha actual
+var fechaActual = new Date();
 var dia = fechaActual.getDate();
 var mes = fechaActual.getMonth() + 1;
 var ano = fechaActual.getFullYear();
@@ -111,80 +110,60 @@ document.getElementById("dia_e").value = dia;
 document.getElementById("mes_e").value = mes;
 document.getElementById("ano_e").value = ano;
 
-document.getElementById("enviarFormulario").addEventListener("click", function(event) {
-    event.preventDefault();
-
-    // Obtener valores de fecha del formulario
+// Función para validar campos
+function validarCampos() {
+    // Validar fecha
     var dia_c = document.getElementById("dia_c").value;
     var mes_c = document.getElementById("mes_c").value;
     var ano_c = document.getElementById("ano_c").value;
-
-    // Validar fecha ingresada
     if (!dia_c || !mes_c || !ano_c) {
         alert("Por favor, ingresa una fecha completa.");
-        return;
+        return false;
     }
 
     var fechaIngresada = new Date(ano_c, mes_c - 1, dia_c);
-
     if (fechaIngresada.getFullYear() != ano_c || (fechaIngresada.getMonth() + 1) != mes_c || fechaIngresada.getDate() != dia_c) {
         alert("La fecha ingresada no es válida.");
-        return;
+        return false;
+    }
+
+    // Validar hora
+    var hora_c = document.getElementById("hora_c").value;
+    var min_c = document.getElementById("min_c").value;
+    if (!hora_c || !min_c || isNaN(hora_c) || isNaN(min_c) || hora_c < 0 || hora_c > 23 || min_c < 0 || min_c > 59) {
+        alert("Ingrese una hora a citar.");
+        return false;
     }
 
     // Validar semestre
-    var sem = document.getElementById("semestre").value;
+    var semestre = document.getElementById("semestre").value;
     var semestres = /^[1-6]+$/;
-    var r2 = semestres.test(sem);
-
-    if (document.getElementById("semestre").value == "") {
-        alert("Ingresa el semestre <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
-        document.getElementById("semestre").value = "<?php echo $semestre; ?>";
-    } else if (r2 != true) {
-        alert("Ingresa correctamente el semestre <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
-        document.getElementById("semestre").value = "<?php echo $semestre; ?>";
+    if (!semestre) {
+        alert("Ingresa el semestre <?php if ($genero == 'H') { echo 'del alumno'; } else { echo 'de la alumna'; } ?>.");
+        return false;
+    }
+    if (!semestres.test(semestre)) {
+        alert("Ingresa correctamente el semestre (1-6).");
+        return false;
     }
 
-    // Enviar formulario si todo es válido
-    if (r2 == true) {
-        document.getElementById("formCitatorio").submit(); 
+    return true;
+}
+
+// Manejar el botón de enviar
+document.getElementById("enviarFormulario").addEventListener("click", function(event) {
+    event.preventDefault();
+    if (validarCampos()) {
+        document.getElementById("formCitatorio").submit();
     }
 });
-document.getElementById('printButton').addEventListener('click', function() {
-        
-        var dia_c = document.getElementById("dia_c").value;
-    var mes_c = document.getElementById("mes_c").value;
-    var ano_c = document.getElementById("ano_c").value;
 
-    // Validar fecha ingresada
-    if (!dia_c || !mes_c || !ano_c) {
-        alert("Por favor, ingresa una fecha completa.");
-        return;
-    }
-
-    var fechaIngresada = new Date(ano_c, mes_c - 1, dia_c);
-
-    if (fechaIngresada.getFullYear() != ano_c || (fechaIngresada.getMonth() + 1) != mes_c || fechaIngresada.getDate() != dia_c) {
-        alert("La fecha ingresada no es válida.");
-        return;
-    }
-
-    // Validar semestre
-    var sem = document.getElementById("semestre").value;
-    var semestres = /^[1-6]+$/;
-    var r2 = semestres.test(sem);
-
-    if (document.getElementById("semestre").value == "") {
-        alert("Ingresa el semestre <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
-        document.getElementById("semestre").value = "<?php echo $semestre; ?>";
-    } else if (r2 != true) {
-        alert("Ingresa correctamente el semestre <?php if($genero == 'H'){ echo 'del alumno'; }else{ echo 'de la alumna'; } ?>");
-        document.getElementById("semestre").value = "<?php echo $semestre; ?>";
-    }
-
-    // Enviar formulario si todo es válido
-    if (r2 == true) {
+// Manejar el botón de imprimir
+document.getElementById("printButton").addEventListener("click", function(event) {
+    event.preventDefault();
+    if (validarCampos()) {
         window.print();
     }
-    });
+});
 </script>
+
